@@ -1,3 +1,6 @@
+const rulesDirPlugin = require('eslint-plugin-rulesdir')
+rulesDirPlugin.RULES_DIR = 'rules'
+
 module.exports = {
   root: true,
   env: {
@@ -13,7 +16,8 @@ module.exports = {
   ],
   plugins: [
     'prettier',
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'rulesdir'
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -26,7 +30,10 @@ module.exports = {
   },
   rules: {
     'nuxt/no-cjs-in-config': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    'rulesdir/no-directly-use-process': 'error'
   }
 }
