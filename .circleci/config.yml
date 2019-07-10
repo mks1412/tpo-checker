@@ -46,7 +46,7 @@ jobs:
           command: yarn install --pure-lockfile
       - run:
           name: Install dependencies for cloud functions
-          command: cd funcsions && npm install
+          command: cd functions && npm install
       - run: npm install -D firebase-tools
       - save_cache:
           paths:
@@ -70,7 +70,7 @@ workflows:
       - test:
           name: test
       - deploy:
-          name: deploy_production
+          name: deploy
           env: PRODUCTION
           requires:
             - test
