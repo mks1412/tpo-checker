@@ -1,5 +1,5 @@
 export const SiteConfig = {
-  title: 'TPOPT',
+  title: 'FASHERGE',
   url: 'localhost:3000',
   language: 'ja',
   catchCopy: '',

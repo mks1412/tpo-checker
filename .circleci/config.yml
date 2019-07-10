@@ -1,0 +1,81 @@
+version: 2.1
+
+executors:
+  node-10153:
+    docker:
+      - image: circleci/node:10.15.3
+    working_directory: /repo
+
+orbs:
+  codecov: codecov/codecov@1.0.5
+
+jobs:
+  test:
+    executor: node-10153
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --pure-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}-{{ checksum "package.json" }}
+      - run:
+          name: Test
+          command: yarn test
+      - codecov/upload:
+          file: coverage/*.json
+
+  deploy:
+    executor: node-10153
+    parameters:
+      env:
+        type: enum
+        enum: ['PRODUCTION']
+      gcloud-project-id:
+        type: string
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "functions/package.json" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --pure-lockfile
+      - run:
+          name: Install dependencies for cloud functions
+          command: cd funcsions && npm install
+      - run: npm install -D firebase-tools
+      - save_cache:
+          paths:
+            - node_modules
+            - functions/node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "functions/package.json" }}
+      - run:
+          name: Decode Environment Variables
+          command: echo $<< parameters.env >>_DOT_ENV | base64 -d > .env
+      - run:
+          name: Build
+          command: yarn build
+      - run:
+          name: Deploy
+          command: node_modules/.bin/firebase deploy --project fasherge --token "$FIREBASE_TOKEN"
+
+workflows:
+  version: 2
+  standard-workflow:
+    jobs:
+      - test:
+          name: test
+      - deploy:
+          name: deploy_production
+          env: PRODUCTION
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
