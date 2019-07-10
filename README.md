@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/mks1412/fasherge.svg?style=svg&circle-token=37420c89c752ce047a4d21198e943f35c1d87408)](https://circleci.com/gh/mks1412/fasherge)
+[![CircleCI](https://circleci.com/gh/mks1412/fasherge.svg?style=svg)](https://circleci.com/gh/mks1412/fasherge)
 [![codecov](https://codecov.io/gh/mks1412/fasherge/branch/master/graph/badge.svg)](https://codecov.io/gh/mks1412/fasherge)
 
 # FASHERGE
