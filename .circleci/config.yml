@@ -36,8 +36,6 @@ jobs:
       env:
         type: enum
         enum: ['PRODUCTION']
-      gcloud-project-id:
-        type: string
     steps:
       - checkout
       - restore_cache:
