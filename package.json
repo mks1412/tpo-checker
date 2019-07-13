@@ -15,7 +15,7 @@
     "analyze": "cross-env NODE_ENV=production nuxt build --analyze",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "screenshot": "zisui --serverCmd \"start-storybook -p 9001\" http://localhost:9001 -V \"iPhone X\""
+    "screenshot": "zisui --serverCmd \"yarn storybook\" http://localhost:6006 -V \"iPhone X\""
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.5.4",
