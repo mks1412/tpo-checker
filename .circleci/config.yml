@@ -3,7 +3,7 @@ version: 2.1
 executors:
   node-10153:
     docker:
-      - image: circleci/node:10.15.3-browsers
+      - image: regviz/node-xcb
     working_directory: ~/repo
 
 orbs:
