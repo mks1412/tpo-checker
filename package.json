@@ -17,7 +17,7 @@
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "storybook:deploy": "storybook-to-ghpages",
-    "screenshot": "zisui --serverCmd \"yarn storybook\" http://localhost:6006 -V \"iPhone X\" --serverTimeout 100000"
+    "screenshot": "zisui --serverCmd \"start-storybook --ci -p 9001\" -V \"iPhone X\" --serverTimeout 60000 http://localhost:9001"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.5.4",
