@@ -4,7 +4,7 @@
  ** Docs: https://tailwindcss.com/docs/configuration
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
-const config = {
+module.exports = {
   theme: {
     extend: {
       colors: {
@@ -18,6 +18,3 @@ const config = {
   variants: {},
   plugins: []
 }
-
-module.exports = config
-module.exports.colors = config.theme.extend.colors
