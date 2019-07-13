@@ -39,8 +39,8 @@ jobs:
       - codecov/upload:
           file: coverage/*.json
       - run:
-          name: Storybook
-          command: yarn storybook
+          name: Build
+          command: yarn build
       - run:
           name: Screenshot
           command: yarn screenshot
