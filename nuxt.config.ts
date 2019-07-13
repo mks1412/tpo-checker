@@ -88,7 +88,7 @@ const config: NuxtConfiguration = {
   axios: {},
 
   tailwindcss: {
-    configPath: '@/tailwind.config.js'
+    configPath: '@@/tailwind.config.js'
   },
 
   styleResources: {
