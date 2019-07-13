@@ -6,11 +6,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-const Theme = require('../../tailwind.config')
 
 @Component({})
 export default class BaseButton extends Vue {
-  @Prop({ type: String, default: Theme.colors.base }) backgroundColor!: string
+  @Prop({ type: String, default: '#08d9d6' }) backgroundColor!: string
   @Prop({ type: Boolean, default: false }) disabled!: boolean
   @Prop({ type: Boolean, default: false }) depressed!: boolean
   @Prop({ type: Boolean, default: false }) flat!: boolean

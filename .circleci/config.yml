@@ -3,7 +3,7 @@ version: 2.1
 executors:
   node-10153:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:10.15.3-browsers
     working_directory: ~/repo
 
 orbs:
@@ -17,6 +17,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}-{{ checksum "package.json" }}
+            - v1-dependencies-
       - run:
           name: Install dependencies
           command: yarn install --pure-lockfile
@@ -25,10 +26,19 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}-{{ checksum "package.json" }}
       - run:
-          name: Test
-          command: yarn test
+          name: Lint
+          command: yarn lint
+      - run:
+          name: Unit Test
+          command: yarn test:unit
       - codecov/upload:
           file: coverage/*.json
+      - run:
+          name: Screenshot
+          command: yarn screenshot
+      - store_artifacts:
+          path: ./__screenshots__
+          destination: screenshots
 
   deploy:
     executor: node-10153
