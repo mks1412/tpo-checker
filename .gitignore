@@ -86,3 +86,10 @@ sw.*
 
 # Mac OSX
 .DS_Store
+
+# Screenshots
+__screenshots__
+.reg
+
+# Service Key
+gcloud-service-key.json

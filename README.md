@@ -1,5 +1,6 @@
 [![CircleCI](https://circleci.com/gh/mks1412/fasherge.svg?style=svg)](https://circleci.com/gh/mks1412/fasherge)
 [![codecov](https://codecov.io/gh/mks1412/fasherge/branch/master/graph/badge.svg)](https://codecov.io/gh/mks1412/fasherge)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://mks1412.github.io/fasherge/)
 
 # FASHERGE
 
