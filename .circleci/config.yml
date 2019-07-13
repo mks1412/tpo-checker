@@ -39,11 +39,10 @@ jobs:
       - codecov/upload:
           file: coverage/*.json
       - run:
-          name: Build
-          command: yarn build
-      - run:
           name: Screenshot
-          command: yarn screenshot
+          command: |
+            yarn storybook &
+            yarn screenshot
       - store_artifacts:
           path: ./__screenshots__
           destination: screenshots
