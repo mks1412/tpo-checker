@@ -89,3 +89,7 @@ sw.*
 
 # Screenshots
 __screenshots__
+.reg
+
+# Service Key
+gcloud-service-key.json

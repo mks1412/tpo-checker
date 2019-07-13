@@ -5,6 +5,8 @@ executors:
     docker:
       - image: regviz/node-xcb
     working_directory: ~/repo
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: "/root/gcloud-service-key.json"
 
 orbs:
   codecov: codecov/codecov@1.0.5
@@ -26,6 +28,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}-{{ checksum "package.json" }}
       - run:
+          name: Setup GCP
+          command: echo $GCLOUD_SERVICE_KEY | base64 -d > /root/gcloud-service-key.json
+      - run:
           name: Lint
           command: yarn lint
       - run:
@@ -39,6 +44,9 @@ jobs:
       - store_artifacts:
           path: ./__screenshots__
           destination: screenshots
+      - run:
+          name: Visual Test
+          command: yarn test:visual
 
   deploy:
     executor: node-10153
