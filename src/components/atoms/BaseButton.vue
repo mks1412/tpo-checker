@@ -18,17 +18,14 @@ export default class BaseButton extends Vue {
   @Prop({ type: String, default: '#fff' }) textColor!: string
   @Prop({ type: Boolean, default: false }) round!: boolean
 
-  public get classes(): string {
-    const classDict: { [key: string]: boolean } = {
+  public get classes(): { [key: string]: boolean } {
+    return {
       'f-btn--disabled': this.disabled,
       'f-btn--depressed': this.depressed,
       'f-btn--flat': this.flat,
       'f-btn--small': this.small,
       'f-btn--round': this.round
     }
-    return Object.keys(classDict)
-      .filter((key: string) => classDict[key])
-      .join(' ')
   }
 
   public get styles(): { [key: string]: string } {
