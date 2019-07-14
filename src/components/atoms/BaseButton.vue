@@ -1,5 +1,5 @@
 <template lang="pug">
-  button.f-btn(:class="classes" :style="styles" :disabled="disabled" type="button" @click="log")
+  button.f-btn(:class="classes" :style="styles" :disabled="disabled" :type="type")
     .f-btn__content
       | {{ label }}
 </template>
@@ -15,6 +15,7 @@ export default class BaseButton extends Vue {
   @Prop({ type: Boolean, default: false }) flat!: boolean
   @Prop({ type: String, default: '' }) label!: string
   @Prop({ type: Boolean, default: false }) small!: boolean
+  @Prop({ type: String, default: 'button' }) type!: string
   @Prop({ type: String, default: '#fff' }) textColor!: string
   @Prop({ type: Boolean, default: false }) round!: boolean
 
@@ -28,15 +29,11 @@ export default class BaseButton extends Vue {
     }
   }
 
-  public get styles(): { [key: string]: string } {
+  get styles(): { [key: string]: string } {
     return {
       '--background-color': this.backgroundColor,
       '--text-color': this.textColor
     }
-  }
-
-  log(): void {
-    console.log(this.backgroundColor)
   }
 }
 </script>
