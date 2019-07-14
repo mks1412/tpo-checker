@@ -1,5 +1,5 @@
 <template lang="pug">
-  .f-logo
+  .f-logo(:style="styles")
     include ../svg/logo.svg
 </template>
 
@@ -20,10 +20,10 @@ export default class Logo extends Vue {
 
 <style lang="scss" scoped>
 .f-logo {
-  --loog-color: #fff;
+  --logo-color: #fff;
 
   path {
-    fill: var(--loog-color);
+    fill: var(--logo-color);
   }
 }
 </style>
