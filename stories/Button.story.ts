@@ -15,7 +15,8 @@ storiesOf('Button', module)
       <BaseButton class="mb-4" label="Depressed" depressed />
       <BaseButton class="mb-4" label="Round" round />
       <BaseButton class="mb-4" label="Small" small />
-      <BaseButton class="mb-4" label="Flat" flat />
+      <BaseButton class="mb-4" label="Flat" flat :textColor="textColor" />
+      <BaseButton class="mb-4" label="Disabled" disabled />
     </div>
   `,
       data() {
