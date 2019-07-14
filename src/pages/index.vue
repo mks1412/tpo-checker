@@ -1,70 +1,41 @@
-<template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        tpopt
-      </h1>
-      <h2 class="subtitle">
-        fashon checker based on TPO
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  .lp.h-screen.bg-base.overflow-auto
+    .lp__logo(class="w-4/5 max-w-md m-auto")
+      logo
+    .lp__catch-copy(class="w-4/5 max-w-md m-auto")
+      | オンラインでお気に入りの
+      br
+      | コーデを見つけよう
+    .lp__illust(class="w-full max-w-md m-auto mt-10")
+      img(src="@/assets/images/lp_illust.png")
+    .lp__auth-area(class="w-4/5 max-w-md m-auto mt-10")
+      base-button(label="アカウント作成" backgroundColor="#fff" textColor="#08d9d6" to="/signup" round)
+      base-button.mt-4(label="ログイン" to="/signin" flat)
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Logo from '@/components/Logo.vue'
+import { Component, Vue } from 'nuxt-property-decorator'
+import BaseButton from '@/components/atoms/BaseButton.vue'
+import Logo from '@/components/atoms/Logo.vue'
 
-export default Vue.extend({
+@Component({
   components: {
+    BaseButton,
     Logo
   }
 })
+export default class Index extends Vue {}
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="scss" scoped>
+.lp {
+  padding-top: 10vh;
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: theme('colors.base');
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  &__catch-copy {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    margin-top: 15vh;
+  }
 }
 </style>
