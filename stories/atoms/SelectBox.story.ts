@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue'
 import { withInfo } from 'storybook-addon-vue-info'
 import SelectBox from '@/components/atoms/SelectBox.vue'
 
-storiesOf('Input', module)
+storiesOf('Atoms', module)
   .addDecorator(withInfo)
   .add(
     'SelectBox',

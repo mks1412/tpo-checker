@@ -2,10 +2,10 @@ import { storiesOf } from '@storybook/vue'
 import { withInfo } from 'storybook-addon-vue-info'
 import Logo from '@/components/atoms/Logo.vue'
 
-storiesOf('Logo', module)
+storiesOf('Atoms', module)
   .addDecorator(withInfo)
   .add(
-    'list',
+    'Logo',
     () => ({
       components: { Logo },
       template: `

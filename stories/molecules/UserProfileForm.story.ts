@@ -10,7 +10,7 @@ storiesOf('Molecules', module)
       components: { UserProfileForm },
       template: `
     <div class="p-8">
-      <user-profile-form :profile="profile" />
+      <user-profile-form v-model="profile" />
     </div>
   `,
       data() {

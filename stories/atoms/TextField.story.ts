@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue'
 import { withInfo } from 'storybook-addon-vue-info'
 import TextField from '@/components/atoms/TextField.vue'
 
-storiesOf('Input', module)
+storiesOf('Atoms', module)
   .addDecorator(withInfo)
   .add(
     'TextField',

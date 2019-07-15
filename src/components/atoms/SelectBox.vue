@@ -89,8 +89,6 @@ export default class SelectBox extends Vue {
 
 <style lang="scss" scoped>
 .f-input__slot {
-  display: flex;
-
   .f-input__select-box {
     background-color: transparent;
     border: none;
@@ -101,19 +99,6 @@ export default class SelectBox extends Vue {
     outline: none;
     padding: 8px 0 8px;
     width: 100%;
-  }
-
-  &--select-wrapper {
-    &:after {
-      position: relative;
-      top: 1em;
-      right: 0.5em;
-      content: '';
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 6px solid #666666;
-      pointer-events: none;
-    }
   }
 }
 </style>
