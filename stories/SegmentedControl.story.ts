@@ -18,8 +18,8 @@ storiesOf('Input', module)
       data() {
         return {
           sex: 0,
-          options1: [{ label: '男性', value: 0 }, { label: '女性', value: 1 }],
-          options2: [{ label: '男性', value: 0 }, { label: '女性', value: 1 }, { label: '登録しない', value: 2 }]
+          options1: [{ label: 'Male', value: 0 }, { label: 'Female', value: 1 }],
+          options2: [{ label: 'Male', value: 0 }, { label: 'Female', value: 1 }, { label: 'Other', value: 2 }]
         }
       }
     }),
