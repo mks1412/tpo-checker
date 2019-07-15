@@ -22,6 +22,11 @@ export default class Logo extends Vue {
 .f-logo {
   --logo-color: #fff;
 
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
   path {
     fill: var(--logo-color);
   }

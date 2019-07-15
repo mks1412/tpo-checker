@@ -30,6 +30,7 @@ import BaseInput from '@/components/atoms/BaseInput.vue'
 export default class TextField extends Vue {
   @Prop({ type: Boolean, default: false }) box!: boolean
   @Prop({ type: String }) hint!: string
+  @Prop({ type: Boolean, default: false }) hideDetails!: boolean
   @Prop({ type: String }) label!: string
   @Prop({ type: Number }) min!: number
   @Prop({ type: Number }) minlength!: number
@@ -66,7 +67,7 @@ export default class TextField extends Vue {
   }
 
   get hasDetail(): boolean {
-    return this.hasError || this.hasHint
+    return (this.hasError || this.hasHint) && !this.hideDetails
   }
 
   get inputState(): string {
