@@ -40,9 +40,8 @@ export default class TextField extends Vue {
   @Prop({ type: Boolean, default: false }) required!: boolean
   @Prop({ type: String }) suffix!: string
   @Prop({ type: String, default: 'text' }) type!: string
-  @Prop({ type: String }) value!: string
+  @Prop({ type: [String, Number] }) value!: string | number
 
-  text: string = ''
   isActive: boolean = false
   errorMessage: string = ''
 
@@ -74,6 +73,14 @@ export default class TextField extends Vue {
     if (this.isActive) return 'active'
     if (this.hasError) return 'error'
     return 'inactive'
+  }
+
+  get text(): string | number {
+    return this.value
+  }
+
+  set text(value: string | number) {
+    this.type === 'number' ? this.$emit('input', Number(value)) : this.$emit('input', value)
   }
 
   private onFocus() {
