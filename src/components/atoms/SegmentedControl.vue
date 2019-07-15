@@ -1,5 +1,5 @@
 <template lang="pug">
-  .f-segmented-control(:style="styles")
+  .f-segmented-control(:style="styles" :class="classes")
     template(v-for="option in options")
       input.f-segmented-control__input(
         type="radio"
@@ -21,6 +21,13 @@ export default class SegmentedControl extends Vue {
   @Prop({ type: Array, required: true }) options!: SelectableOption[]
   @Prop({ type: [String, Number], required: true }) value!: string | number
   @Prop({ type: String }) color!: string
+  @Prop({ type: Boolean, default: false }) round!: boolean
+
+  get classes(): { [key: string]: boolean } {
+    return {
+      'f-segmented-control--round': this.round
+    }
+  }
 
   get styles() {
     return {
@@ -42,13 +49,21 @@ export default class SegmentedControl extends Vue {
 .f-segmented-control {
   --active-color: #08d9d6;
 
-  border: 1px solid var(--active-color);
-  color: var(--active-color);
+  background-color: #fff;
+  color: #828282;
   display: flex;
   font-size: 13px;
   position: relative;
   user-select: none;
   width: 100%;
+
+  &--round {
+    border-radius: 5px;
+
+    .f-segmented-control__label {
+      border-radius: 5px;
+    }
+  }
 
   &__input {
     display: none;
@@ -66,10 +81,6 @@ export default class SegmentedControl extends Vue {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    &:not(:last-child) {
-      border-right: 1px solid var(--active-color);
-    }
   }
 }
 </style>

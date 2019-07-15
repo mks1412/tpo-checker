@@ -118,4 +118,14 @@ export default class TextField extends Vue {
     padding: 8px 0 8px;
   }
 }
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
 </style>

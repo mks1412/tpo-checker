@@ -26,7 +26,7 @@ export default class BaseButton extends Vue {
   @Prop({ type: String }) to!: string
   @Prop({ type: Boolean, default: false }) round!: boolean
 
-  public get classes(): { [key: string]: boolean } {
+  get classes(): { [key: string]: boolean } {
     return {
       'f-btn--disabled': this.disabled,
       'f-btn--depressed': this.depressed,
