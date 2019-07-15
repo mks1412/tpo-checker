@@ -13,16 +13,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-
-export interface SegmentedControlOption {
-  label: string
-  value: string | number
-}
+import { SelectableOption } from '@/components/atoms/BaseInput.vue'
 
 @Component({})
 export default class SegmentedControl extends Vue {
   @Prop({ type: String, required: true }) name!: string
-  @Prop({ type: Array, required: true }) options!: SegmentedControlOption[]
+  @Prop({ type: Array, required: true }) options!: SelectableOption[]
   @Prop({ type: [String, Number], required: true }) value!: string | number
   @Prop({ type: String }) color!: string
 

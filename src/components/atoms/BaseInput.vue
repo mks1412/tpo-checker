@@ -11,6 +11,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
+export interface SelectableOption {
+  label: string
+  value: string | number
+}
+
 @Component({})
 export default class BaseInput extends Vue {
   @Prop({ type: String, default: 'inactive' }) inputState!: 'inactive' | 'active' | 'error'
