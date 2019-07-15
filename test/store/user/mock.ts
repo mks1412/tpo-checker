@@ -1,3 +1,4 @@
+import * as firebase from 'firebase'
 import { UserState } from '@/store/user/types'
 import { UserProfileEntity, Gender } from '@/entities/User'
 

@@ -10,7 +10,7 @@ export type UserActionContext = ActionContext<UserState, RootState>
 
 export interface UserActions extends ActionTree<UserState, RootState> {
   signup: (ctx: UserActionContext, params: UserParams) => void
-  signin: (ctx: UserActionContext, user: UserProfileEntity) => void
+  signin: (ctx: UserActionContext, user: firebase.User) => void
   signout: (ctx: UserActionContext) => void
 }
 

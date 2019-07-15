@@ -1,4 +1,5 @@
-import { mockState, mockUserProfile } from './mock'
+import * as firebase from 'firebase'
+import { mockState } from './mock'
 import { actions } from '@/store/user/actions'
 import { UserState, UserActionContext } from '@/store/user/types'
 import { initState } from '@/store/user/state'
@@ -7,7 +8,7 @@ let actionCxt: UserActionContext
 let commit: jest.Mock
 let state: UserState
 
-describe('Polls actions', () => {
+describe('User actions', () => {
   beforeEach(() => {
     commit = jest.fn()
     state = mockState()
@@ -22,15 +23,17 @@ describe('Polls actions', () => {
   })
 
   describe('signin', () => {
-    beforeEach(async () => {
-      await actions.signin(actionCxt, mockUserProfile())
+    beforeEach(() => {
+      actions.signin(actionCxt, {
+        uid: 'hogehoge',
+        displayName: 'testDisplayName',
+        email: 'test@test.com',
+        photoURL: ''
+      } as firebase.User)
     })
 
     test('commits "setUser"', () => {
       expect(commit).toHaveBeenCalledTimes(1)
-      const commitCall = commit.mock.calls[0]
-      const user = mockUserProfile()
-      expect(commitCall[1]).toEqual(user)
     })
   })
 
@@ -41,7 +44,6 @@ describe('Polls actions', () => {
 
     test('commits "setUser with initState"', () => {
       expect(commit).toHaveBeenCalledTimes(1)
-
       const commitCall = commit.mock.calls[0]
       const user = initState().profile
       expect(commitCall[1]).toEqual(user)
