@@ -1,7 +1,7 @@
 <template lang="pug">
   .lp.h-screen.bg-base.overflow-auto
     .lp__logo(class="w-4/5 max-w-md m-auto")
-      logo
+      logo.w-48
     .lp__catch-copy(class="w-4/5 max-w-md m-auto")
       | オンラインでお気に入りの
       br
