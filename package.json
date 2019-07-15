@@ -14,7 +14,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "analyze": "cross-env NODE_ENV=production nuxt build --analyze",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -s ./src/assets -p 6006",
     "storybook:build": "build-storybook",
     "storybook:deploy": "storybook-to-ghpages",
     "screenshot": "zisui -V \"iPhone X\" http://localhost:6006"
