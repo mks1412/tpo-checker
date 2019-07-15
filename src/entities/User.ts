@@ -4,7 +4,7 @@ export interface UserProfileEntity {
   name: string
   photoURL: string
   gender: Gender
-  age: number
+  age: number | null
   height: number | null
   weight: number | null
   preferences: number[]
@@ -16,7 +16,7 @@ export interface UserParams {
   name?: string
   photoURL?: string
   gender?: Gender
-  age?: number
+  age?: number | null
   height?: number | null
   weight?: number | null
   preferences?: number[]

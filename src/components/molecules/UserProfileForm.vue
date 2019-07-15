@@ -77,11 +77,7 @@ interface UserProfileDiff {
 export default class UserProfileForm extends Vue {
   @Prop({ type: Object, required: true }) value!: UserProfileFormParams
 
-  private genders: SelectableOption[] = [
-    { label: '男性', value: Gender.male },
-    { label: '女性', value: Gender.female },
-    { label: '登録しない', value: Gender.other }
-  ]
+  private genders: SelectableOption[] = [{ label: 'MEN', value: Gender.male }, { label: 'WOMEN', value: Gender.female }]
 
   get name() {
     return this.value.name
