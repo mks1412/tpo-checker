@@ -3,7 +3,7 @@ import 'firebase/firestore'
 import 'firebase/auth'
 import 'firebase/storage'
 
-import { environments } from './environments'
+import { environments } from '../plugins/environments'
 
 if (!firebase.apps.length) {
   firebase.initializeApp({

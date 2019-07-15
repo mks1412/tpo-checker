@@ -1,6 +1,6 @@
 import { UserActions } from './types'
 import { initState } from './state'
-import { auth } from '@/plugins/firebase'
+import { auth } from '@/lib/firebase'
 
 export const actions: UserActions = {
   signup: ({ commit }, params) => {

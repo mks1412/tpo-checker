@@ -10,7 +10,7 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import BaseButton from '@/components/atoms/BaseButton.vue'
 import Logo from '@/components/atoms/Logo.vue'
-import { auth, googleProvider } from '@/plugins/firebase'
+import { auth, googleProvider } from '@/lib/firebase'
 
 @Component({
   components: {
