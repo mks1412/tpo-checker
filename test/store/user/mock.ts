@@ -33,6 +33,7 @@ export const mockUserProfile = (index: number = 0): UserProfileEntity => {
 
 export const mockState = (index: number = 0): UserState => {
   return {
-    profile: mockUserProfile(index)
+    profile: mockUserProfile(index),
+    loading: false
   }
 }

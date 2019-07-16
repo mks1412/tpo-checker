@@ -28,6 +28,14 @@ export const actions: UserActions = {
     auth.signOut().then(() => {
       commit('setUser', initState().profile)
     })
+  },
+
+  startLoading: ({ commit }) => {
+    commit('setLoading', true)
+  },
+
+  endLoading: ({ commit }) => {
+    commit('setLoading', false)
   }
 }
 

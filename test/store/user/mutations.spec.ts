@@ -27,4 +27,13 @@ describe('User mutations', () => {
       expect(state.profile.gender).toEqual(params.gender)
     })
   })
+
+  describe('set loading', () => {
+    test('works', () => {
+      mutations.setLoading(state, true)
+      expect(state.loading).toEqual(true)
+      mutations.setLoading(state, false)
+      expect(state.loading).toEqual(false)
+    })
+  })
 })

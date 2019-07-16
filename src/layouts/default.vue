@@ -1,7 +1,26 @@
 <template lang="pug">
   div
+    transition(name="fade")
+      .h-screen.absolute.top.inset-0.bg-white.flex.items-center(v-show="loading")
+        loader(color="#08d9d6")
     nuxt
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+import Loader from '@/components/atoms/Loader.vue'
+import { userModule } from '@/store/user/const'
+
+@Component({
+  components: {
+    Loader
+  }
+})
+export default class DefaultLayout extends Vue {
+  @userModule.State('loading')
+  private loading!: boolean
+}
+</script>
 
 <style>
 html {
@@ -21,5 +40,13 @@ html {
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

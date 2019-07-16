@@ -14,6 +14,7 @@ describe('User state', () => {
       expect(state.profile.height).toBeNull()
       expect(state.profile.weight).toBeNull()
       expect(state.profile.preferences).toEqual([])
+      expect(state.loading).toBeFalsy()
     })
   })
 })

@@ -12,7 +12,8 @@ export const initState = (): UserState => ({
     height: null,
     weight: null,
     preferences: []
-  }
+  },
+  loading: false
 })
 
 export default initState

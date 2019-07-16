@@ -7,6 +7,10 @@ export const mutations: UserMutations = {
 
   updateUser: (state, params) => {
     state.profile = { ...state.profile, ...params }
+  },
+
+  setLoading: (state, loading) => {
+    state.loading = loading
   }
 }
 

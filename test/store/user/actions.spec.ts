@@ -49,4 +49,28 @@ describe('User actions', () => {
       expect(commitCall[1]).toEqual(user)
     })
   })
+
+  describe('startLoading', () => {
+    beforeEach(() => {
+      actions.startLoading(actionCxt)
+    })
+
+    test('commits "setLoading with true"', () => {
+      expect(commit).toHaveBeenCalledTimes(1)
+      const commitCall = commit.mock.calls[0]
+      expect(commitCall[1]).toEqual(true)
+    })
+  })
+
+  describe('endLoading', () => {
+    beforeEach(() => {
+      actions.endLoading(actionCxt)
+    })
+
+    test('commits "setLoading with false"', () => {
+      expect(commit).toHaveBeenCalledTimes(1)
+      const commitCall = commit.mock.calls[0]
+      expect(commitCall[1]).toEqual(false)
+    })
+  })
 })
