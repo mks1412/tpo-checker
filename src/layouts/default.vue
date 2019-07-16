@@ -1,7 +1,27 @@
 <template lang="pug">
   div
+    transition(name="fade")
+      .h-screen.absolute.top.inset-0.bg-white.flex.items-center.z-50(v-show="loading")
+        loader(color="#08d9d6")
     nuxt
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+import Loader from '@/components/atoms/Loader.vue'
+import { userModule } from '@/store/user/const'
+
+@Component({
+  components: {
+    Loader
+  },
+  middleware: ['authenticated']
+})
+export default class DefaultLayout extends Vue {
+  @userModule.State('loading')
+  private loading!: boolean
+}
+</script>
 
 <style>
 html {
@@ -23,32 +43,12 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
