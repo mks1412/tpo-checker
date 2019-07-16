@@ -116,7 +116,6 @@ export default class UserProfileForm extends Vue {
   }
 
   set weight(weight: number | null) {
-    console.log(weight)
     this.updateValue({ weight })
   }
 

@@ -1,10 +1,18 @@
 import { UserActions } from './types'
 import { initState } from './state'
 import { auth } from '@/lib/firebase'
+import UsersRepository from '~/repositories/UsersRepository'
+
+const repository = new UsersRepository()
 
 export const actions: UserActions = {
-  signup: ({ commit }, params) => {
+  signup: async ({ commit, state }, params) => {
     commit('updateUser', params)
+    try {
+      await repository.setProfile(state.profile.id, { ...state.profile, ...params })
+    } catch (e) {
+      console.log(e)
+    }
   },
 
   signin: ({ commit }, user) => {

@@ -1,4 +1,4 @@
-import { CollectionReference, Query, Timestamp, DocumentData } from '@firebase/firestore-types'
+import { CollectionReference, Query, Timestamp } from '@firebase/firestore-types'
 import { firestore } from '@/lib/firebase'
 
 export default class FirestorGateway {
@@ -36,8 +36,8 @@ export default class FirestorGateway {
    * @param limit Number of documents to retrieve
    * @returns Array of Document objects
    */
-  public async get(conditions?: Condition[], orderBy?: OrderBy[], limit?: number): Promise<Document[]> {
-    const documents: Document[] = []
+  public async get<T>(conditions?: Condition[], orderBy?: OrderBy[], limit?: number): Promise<Document<T>[]> {
+    const documents: Document<T>[] = []
 
     this._query = this._collectionRef
 
@@ -51,7 +51,7 @@ export default class FirestorGateway {
         snapshots.forEach((doc) => {
           documents.push({
             id: doc.id,
-            data: doc.data()
+            data: doc.data() as T
           })
         })
       } catch (error) {
@@ -66,23 +66,13 @@ export default class FirestorGateway {
    * @param id The document ID
    * @returns A Document object or null
    */
-  public async getById(id: string): Promise<Document | null> {
-    let document: Document | null = null
-
-    if (this._isCollectionSet) {
-      try {
-        const doc = await this._collectionRef.doc(id).get()
-        if (doc.exists) {
-          document = {
-            id: doc.id,
-            data: doc.data()!
-          }
-        }
-      } catch (error) {
-        console.log(error)
-      }
+  public async getById<T>(id: string): Promise<Document<T>> {
+    const doc = await this._collectionRef.doc(id).get()
+    if (doc.exists) {
+      return { id: doc.id, data: doc.data() as T }
+    } else {
+      throw new Error('Not found document')
     }
-    return document
   }
 
   /**
@@ -93,11 +83,12 @@ export default class FirestorGateway {
    */
   public async add(data: Record<string, any>, id?: string): Promise<void> {
     if (this._isCollectionSet) {
+      const dataWithTs = { ...data, createdAt: new Date(), updatedAt: new Date() }
       try {
         if (id) {
-          await this._collectionRef.doc(id).set(data)
+          await this._collectionRef.doc(id).set(dataWithTs)
         } else {
-          await this._collectionRef.add(data)
+          await this._collectionRef.add(dataWithTs)
         }
       } catch (error) {
         console.log(error)
@@ -108,7 +99,7 @@ export default class FirestorGateway {
   /**
    * Add multiple documents
    * @param dataArr Array of document objects
-   * @returns ResultData object or null
+   * @returns boolean
    */
   public async batchAdd(dataArr: Record<string, any>[]): Promise<boolean> {
     let result = false
@@ -194,14 +185,9 @@ export default class FirestorGateway {
 }
 
 // @Types
-export interface Document {
+export interface Document<T> {
   id: string
-  data: DocumentData
-}
-
-export interface ResultData {
-  document: Document
-  writeTime?: Timestamp
+  data: T
 }
 
 export interface Condition {
@@ -226,4 +212,9 @@ export enum Operators {
 export enum SortType {
   Ascending = 'asc',
   Descending = 'desc'
+}
+
+export interface FirestoreDocument {
+  createdAt: Timestamp
+  updatedAt: Timestamp
 }
