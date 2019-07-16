@@ -92,7 +92,7 @@ const config: NuxtConfiguration = {
   },
 
   styleResources: {
-    scss: ['@/assets/style/helpers/*.scss']
+    scss: ['@/assets/scss/helpers/*.scss']
   }
 }
 

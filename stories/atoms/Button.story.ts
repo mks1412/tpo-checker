@@ -2,10 +2,10 @@ import { storiesOf } from '@storybook/vue'
 import { withInfo } from 'storybook-addon-vue-info'
 import BaseButton from '@/components/atoms/BaseButton.vue'
 
-storiesOf('Button', module)
+storiesOf('Atoms', module)
   .addDecorator(withInfo)
   .add(
-    'list',
+    'BaseButton',
     () => ({
       components: { BaseButton },
       template: `
@@ -15,7 +15,8 @@ storiesOf('Button', module)
       <BaseButton class="mb-4" label="Depressed" depressed />
       <BaseButton class="mb-4" label="Round" round />
       <BaseButton class="mb-4" label="Small" small />
-      <BaseButton class="mb-4" label="Flat" flat />
+      <BaseButton class="mb-4" label="Flat" flat :textColor="textColor" />
+      <BaseButton class="mb-4" label="Disabled" disabled />
     </div>
   `,
       data() {

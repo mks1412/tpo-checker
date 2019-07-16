@@ -1,5 +1,11 @@
 <template lang="pug">
-  button.f-btn(:class="classes" :style="styles")
+  button.f-btn(
+    :class="classes"
+    :style="styles"
+    :disabled="disabled"
+    :type="type"
+    @click="onClick"
+  )
     .f-btn__content
       | {{ label }}
 </template>
@@ -15,34 +21,46 @@ export default class BaseButton extends Vue {
   @Prop({ type: Boolean, default: false }) flat!: boolean
   @Prop({ type: String, default: '' }) label!: string
   @Prop({ type: Boolean, default: false }) small!: boolean
+  @Prop({ type: String, default: 'button' }) type!: string
   @Prop({ type: String, default: '#fff' }) textColor!: string
+  @Prop({ type: String }) to!: string
   @Prop({ type: Boolean, default: false }) round!: boolean
 
-  public get classes(): string {
-    const classDict: { [key: string]: boolean } = {
+  get classes(): { [key: string]: boolean } {
+    return {
       'f-btn--disabled': this.disabled,
       'f-btn--depressed': this.depressed,
       'f-btn--flat': this.flat,
       'f-btn--small': this.small,
       'f-btn--round': this.round
     }
-    return Object.keys(classDict)
-      .filter((key: string) => classDict[key])
-      .join(' ')
   }
 
-  public get styles(): string {
-    return `background-color:${this.backgroundColor};color:${this.textColor}`
+  get styles(): { [key: string]: string } {
+    return {
+      '--background-color': this.backgroundColor,
+      '--text-color': this.textColor
+    }
+  }
+
+  private onClick() {
+    if (this.to) return this.$router.push(this.to)
+    this.$emit('click')
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .f-btn {
+  --text-color: #fff;
+  --background-color: #08d9d6;
+
   align-items: center;
+  background-color: var(--background-color);
   border: none;
   border-radius: 5px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  color: var(--text-color);
   display: inline-flex;
   font-size: 18px;
   font-weight: 700;
@@ -66,8 +84,13 @@ export default class BaseButton extends Vue {
   }
 
   &--flat {
-    background-color: transparent !important;
+    background-color: transparent;
     box-shadow: none;
+  }
+
+  &--disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.26);
   }
 }
 </style>

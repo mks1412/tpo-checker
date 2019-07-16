@@ -14,8 +14,7 @@ import { userModule } from '@/store/user/const'
 @Component({
   components: {
     Loader
-  },
-  middleware: ['authenticated']
+  }
 })
 export default class DefaultLayout extends Vue {
   @userModule.State('loading')
