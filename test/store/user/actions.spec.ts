@@ -57,8 +57,7 @@ describe('User actions', () => {
 
     test('commits "setLoading with true"', () => {
       expect(commit).toHaveBeenCalledTimes(1)
-      const commitCall = commit.mock.calls[0]
-      expect(commitCall[1]).toEqual(true)
+      expect(commit).toHaveBeenCalledWith('setLoading', true)
     })
   })
 
@@ -69,8 +68,7 @@ describe('User actions', () => {
 
     test('commits "setLoading with false"', () => {
       expect(commit).toHaveBeenCalledTimes(1)
-      const commitCall = commit.mock.calls[0]
-      expect(commitCall[1]).toEqual(false)
+      expect(commit).toHaveBeenCalledWith('setLoading', false)
     })
   })
 })
