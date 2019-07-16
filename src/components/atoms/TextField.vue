@@ -32,10 +32,10 @@ export default class TextField extends Vue {
   @Prop({ type: String }) hint!: string
   @Prop({ type: Boolean, default: false }) hideDetails!: boolean
   @Prop({ type: String }) label!: string
-  @Prop({ type: Number }) min!: number
-  @Prop({ type: Number }) minlength!: number
-  @Prop({ type: Number }) max!: number
-  @Prop({ type: Number }) maxlength!: number
+  @Prop({ type: String }) min!: string
+  @Prop({ type: String }) minlength!: string
+  @Prop({ type: String }) max!: string
+  @Prop({ type: String }) maxlength!: string
   @Prop({ type: String }) pattern!: string
   @Prop({ type: String }) placeholder!: string
   @Prop({ type: Boolean, default: false }) required!: boolean

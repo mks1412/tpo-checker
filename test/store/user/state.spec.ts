@@ -10,7 +10,7 @@ describe('User state', () => {
       expect(state.profile.name).toEqual('')
       expect(state.profile.photoURL).toEqual('')
       expect(state.profile.gender).toEqual(Gender.other)
-      expect(state.profile.age).toEqual(20)
+      expect(state.profile.age).toBeNull()
       expect(state.profile.height).toBeNull()
       expect(state.profile.weight).toBeNull()
       expect(state.profile.preferences).toEqual([])

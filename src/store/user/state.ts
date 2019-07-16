@@ -8,7 +8,7 @@ export const initState = (): UserState => ({
     name: '',
     photoURL: '',
     gender: Gender.other,
-    age: 20,
+    age: null,
     height: null,
     weight: null,
     preferences: []

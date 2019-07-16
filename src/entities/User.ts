@@ -1,5 +1,10 @@
 import { FirestoreDocument } from '@/gateways/FirestoreGateway'
 
+export interface UserAuthInfo {
+  email: string
+  password: string
+}
+
 export interface UserProfileEntity {
   id: string
   email: string

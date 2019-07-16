@@ -1,5 +1,5 @@
 <template lang="pug">
-  .user-profile-form
+  form.user-profile-form(@submit.prevent="onSubmit")
     text-field(
       v-model="name"
       placeholder="ユーザー名"
@@ -18,8 +18,8 @@
       type="number"
       placeholder="年齢"
       suffix="歳"
-      :min="0"
-      :max="100"
+      min="0"
+      max="150"
       box
     )
     .flex.mt-4
@@ -28,8 +28,8 @@
         type="number"
         placeholder="身長"
         suffix="cm"
-        :min="0"
-        :max="100"
+        min="0"
+        max="300"
         box
       )
       text-field(
@@ -37,10 +37,16 @@
         type="number"
         placeholder="体重"
         suffix="kg"
-        :min="0"
-        :max="100"
+        min="0"
+        max="300"
         box
       )
+    base-button.mt-6(
+      type="submit"
+      :label="buttonLabel"
+      :disabled="!isProfileValid"
+      small
+    )
 </template>
 
 <script lang="ts">
@@ -48,6 +54,7 @@ import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import TextField from '@/components/atoms/TextField.vue'
 import SelectBox from '@/components/atoms/SelectBox.vue'
 import SegmentedControl from '@/components/atoms/SegmentedControl.vue'
+import BaseButton from '@/components/atoms/BaseButton.vue'
 import { SelectableOption } from '@/components/atoms/BaseInput.vue'
 import { Gender } from '@/entities/User'
 
@@ -71,11 +78,13 @@ interface UserProfileDiff {
   components: {
     TextField,
     SegmentedControl,
-    SelectBox
+    SelectBox,
+    BaseButton
   }
 })
 export default class UserProfileForm extends Vue {
   @Prop({ type: Object, required: true }) value!: UserProfileFormParams
+  @Prop({ type: String, required: true }) buttonLabel!: string
 
   private genders: SelectableOption[] = [{ label: 'MEN', value: Gender.male }, { label: 'WOMEN', value: Gender.female }]
 
@@ -119,8 +128,16 @@ export default class UserProfileForm extends Vue {
     this.updateValue({ weight })
   }
 
+  get isProfileValid(): boolean {
+    return !!this.name
+  }
+
   private updateValue(diff: UserProfileDiff) {
     this.$emit('input', { ...this.value, ...diff })
+  }
+
+  private onSubmit() {
+    this.$emit('submit')
   }
 }
 </script>

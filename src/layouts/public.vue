@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     transition(name="fade")
-      .h-screen.absolute.top.inset-0.bg-white.flex.items-center(v-show="loading")
+      .h-screen.absolute.top.inset-0.bg-white.flex.items-center.z-50(v-show="loading")
         loader(color="#08d9d6")
     nuxt
 </template>

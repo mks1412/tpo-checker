@@ -6,13 +6,9 @@ import UsersRepository from '~/repositories/UsersRepository'
 const repository = new UsersRepository()
 
 export const actions: UserActions = {
-  signup: async ({ commit, state }, params) => {
+  signup: async ({ commit }, params) => {
     commit('updateUser', params)
-    try {
-      await repository.setProfile(state.profile.id, { ...state.profile, ...params })
-    } catch (e) {
-      console.log(e)
-    }
+    await repository.setProfile(params.id, params)
   },
 
   signin: ({ commit }, user) => {

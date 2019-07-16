@@ -6,11 +6,10 @@ export interface UserState {
   profile: UserProfileEntity
   loading: boolean
 }
-
 export type UserActionContext = ActionContext<UserState, RootState>
 
 export interface UserActions extends ActionTree<UserState, RootState> {
-  signup: (ctx: UserActionContext, params: UserParams) => void
+  signup: (ctx: UserActionContext, params: UserProfileEntity) => void
   signin: (ctx: UserActionContext, user: firebase.User) => void
   signout: (ctx: UserActionContext) => void
   startLoading: (ctx: UserActionContext) => void
