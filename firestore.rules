@@ -6,7 +6,7 @@ service cloud.firestore {
     }
 
     match /users/{uid} {
-      allow read: if true
+      allow read: if isAuthenticated()
       allow create: if isAuthenticated()
       allow update: if isAuthenticated() && request.auth.uid == uid
 
