@@ -1,5 +1,5 @@
 import { initState } from '@/store/user/state'
-import { Gender } from '~/entities/User'
+import { Gender } from '@/entities/User'
 
 describe('User state', () => {
   describe('initState', () => {

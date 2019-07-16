@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue'
 import { withInfo } from 'storybook-addon-vue-info'
 import UserPreferenceForm from '@/components/molecules/UserPreferenceForm.vue'
-import { Gender } from '~/entities/User'
+import { Gender } from '@/entities/User'
 
 storiesOf('Molecules', module)
   .addDecorator(withInfo)

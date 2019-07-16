@@ -34,7 +34,8 @@ module.exports = {
     extensions: ['.js','.ts', '.vue', '.json'],
     alias: {
       'assets': path.resolve('path/to/assets'),
-      '@': path.resolve(__dirname, '../src')
+      '@': path.resolve(__dirname, '../src'),
+      '~': path.resolve(__dirname, '../src')
     }
   }
 }
