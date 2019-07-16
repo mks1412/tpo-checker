@@ -30,7 +30,8 @@ import { userModule } from '@/store/user/const'
     Logo,
     UserProfileForm,
     UserPreferenceForm
-  }
+  },
+  layout: 'public'
 })
 export default class UserRegistration extends Vue {
   @userModule.Getter('uid')

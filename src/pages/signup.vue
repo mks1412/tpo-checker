@@ -16,7 +16,8 @@ import { auth, googleProvider } from '@/lib/firebase'
   components: {
     BaseButton,
     Logo
-  }
+  },
+  layout: 'public'
 })
 export default class Index extends Vue {
   private errorMessage: string = ''

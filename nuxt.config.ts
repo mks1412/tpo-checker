@@ -87,10 +87,6 @@ const config: NuxtConfiguration = {
 
   axios: {},
 
-  router: {
-    middleware: ['authenticated']
-  },
-
   tailwindcss: {
     configPath: '@@/tailwind.config.js'
   },

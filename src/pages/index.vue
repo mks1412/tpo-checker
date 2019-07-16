@@ -22,7 +22,8 @@ import Logo from '@/components/atoms/Logo.vue'
   components: {
     BaseButton,
     Logo
-  }
+  },
+  layout: 'public'
 })
 export default class Index extends Vue {}
 </script>

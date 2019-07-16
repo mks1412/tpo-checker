@@ -2,15 +2,19 @@ import { Context } from '@nuxt/vue-app'
 import { auth } from '@/lib/firebase'
 
 export default (context: Context) => {
+  // StoreにユーザデータがあればOK
   if (context.store.getters.isAuthenticated) return
+
+  // Storeにユーザデータがなければ、Firebase Authenticationをチェック(ローディング画面を表示)
   context.store.dispatch('user/startLoading')
   auth.onAuthStateChanged((user) => {
     if (user) {
       context.store.dispatch('user/signin', user)
-      if (['index', 'signin', 'signup', 'user_regstration'].includes(context.route.name || '')) {
-        context.redirect('/mypage')
-      }
+    } else {
+      context.redirect('/')
     }
-    context.store.dispatch('user/endLoading')
+    setTimeout(() => {
+      context.store.dispatch('user/endLoading')
+    }, 1000)
   })
 }

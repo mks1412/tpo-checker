@@ -6,7 +6,7 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 @Component({})
-export default class UserPreferenceForm extends Vue {
+export default class FormLargeLabel extends Vue {
   @Prop({ type: String, required: true }) text!: string
 }
 </script>
