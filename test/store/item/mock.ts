@@ -14,6 +14,7 @@ export const MOCK_ITEMS: ItemEntity[] = [
     size: 'M',
     color: '#fff',
     category: category1,
+    subcategory: category2,
     purchasedAt: new Date(),
     memo: 'hoge'
   },
@@ -24,6 +25,7 @@ export const MOCK_ITEMS: ItemEntity[] = [
     size: 'S',
     color: '#000',
     category: category2,
+    subcategory: category1,
     purchasedAt: new Date(),
     memo: 'fuga'
   }
@@ -32,7 +34,7 @@ export const MOCK_ITEMS: ItemEntity[] = [
 export const mockState = (): ItemState => {
   return {
     items: {
-      [category1.slug]: [MOCK_ITEMS[0]]
+      [category1.value]: [MOCK_ITEMS[0]]
     },
     loading: false
   }

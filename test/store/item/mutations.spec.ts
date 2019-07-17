@@ -12,8 +12,8 @@ describe('Item mutations', () => {
   describe('set items', () => {
     const newItem = MOCK_ITEMS[1]
     test('works', () => {
-      mutations.setItems(state, { category: newItem.category.slug, items: [newItem] })
-      expect(state.items[newItem.category.slug][0]).toEqual(newItem)
+      mutations.setItems(state, { category: newItem.category.value as string, items: [newItem] })
+      expect(state.items[newItem.category.value][0]).toEqual(newItem)
     })
   })
 
@@ -22,7 +22,7 @@ describe('Item mutations', () => {
     const item = { ...MOCK_ITEMS[0], name: updatedName }
     test('works', () => {
       mutations.updateItem(state, item)
-      expect(state.items[item.category.slug][0].name).toEqual(updatedName)
+      expect(state.items[item.category.value][0].name).toEqual(updatedName)
     })
   })
 
@@ -30,7 +30,7 @@ describe('Item mutations', () => {
     const item = MOCK_ITEMS[0]
     test('works', () => {
       mutations.deleteItem(state, item)
-      expect(state.items[item.category.slug]).toEqual([])
+      expect(state.items[item.category.value]).toEqual([])
     })
   })
 

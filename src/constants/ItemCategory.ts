@@ -1,73 +1,72 @@
-import { Gender } from '@/entities/User'
-import { ItemCategory } from '@/entities/Item'
+import { Gender, SelectableOption } from '@/entities/User'
 
-const UnisexCategories: ItemCategory[] = [
+const UnisexCategories: SelectableOption[] = [
   {
     label: 'トップス',
-    slug: 'tops'
+    value: 'tops'
   },
   {
     label: 'アウター',
-    slug: 'outer'
+    value: 'outer'
   },
   {
     label: 'パンツ',
-    slug: 'pants'
+    value: 'pants'
   },
   {
     label: 'オールインワン',
-    slug: 'all_in_one'
+    value: 'all_in_one'
   },
   {
     label: 'バッグ',
-    slug: 'bag'
+    value: 'bag'
   },
   {
     label: 'シューズ',
-    slug: 'shoes'
+    value: 'shoes'
   },
   {
     label: '財布/小物',
-    slug: 'wallet'
+    value: 'wallet'
   },
   {
     label: '時計',
-    slug: 'watch'
+    value: 'watch'
   },
   {
     label: 'アクセサリー',
-    slug: 'accessory'
+    value: 'accessory'
   },
   {
     label: '帽子',
-    slug: 'hat'
+    value: 'hat'
   }
 ]
 
-const MensCategories: ItemCategory[] = [
+const MensCategories: SelectableOption[] = [
   ...UnisexCategories,
   {
     label: 'スーツ/タイ',
-    slug: 'suits'
+    value: 'suits'
   }
 ]
 
-const WomensCategories: ItemCategory[] = [
+const WomensCategories: SelectableOption[] = [
   ...UnisexCategories,
   {
     label: 'スカート',
-    slug: 'skirt'
+    value: 'skirt'
   },
   {
     label: 'ワンピース',
-    slug: 'skirt'
+    value: 'skirt'
   },
 
   {
     label: 'ヘアアクセサリー',
-    slug: 'hair_accessory'
+    value: 'hair_accessory'
   }
 ]
 
-export const ItemCategories = (gender: Gender): ItemCategory[] =>
+export const ItemCategories = (gender: Gender): SelectableOption[] =>
   gender === Gender.male ? MensCategories : WomensCategories

@@ -3,15 +3,15 @@ import { mockState, MOCK_ITEMS } from './mock'
 import { actions } from '@/store/item/actions'
 import { ItemState, ItemActionContext } from '@/store/item/types'
 import { ItemCategories } from '@/constants/ItemCategory'
-import { Gender } from '@/entities/User'
-import { ItemCategory, ItemEntity } from '@/entities/Item'
+import { Gender, SelectableOption } from '@/entities/User'
+import { ItemEntity } from '@/entities/Item'
 import ItemsRepository from '~/repositories/ItemsRepository'
 
 let actionCxt: ItemActionContext
 let commit: jest.Mock
 let state: ItemState
 const category = ItemCategories(Gender.male)[0]
-let _category: ItemCategory
+let _category: SelectableOption
 let _item: ItemEntity
 let _id: string
 
@@ -33,7 +33,7 @@ describe('Item actions', () => {
     // mock ItemsRepository
     mocked(ItemsRepository).mockImplementation((): any => {
       return {
-        getByCategory: (category: ItemCategory): Promise<ItemEntity[]> => {
+        getByCategory: (category: SelectableOption): Promise<ItemEntity[]> => {
           return new Promise((resolve) => {
             _category = category
             resolve(MOCK_ITEMS)

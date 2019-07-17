@@ -6,13 +6,13 @@ export const mutations: ItemMutations = {
   },
 
   updateItem: (state, item) => {
-    const category = item.category.slug
+    const category = item.category.value
     const target = state.items[category].findIndex((v) => v.id === item.id)
     state.items[category].splice(target, 1, item)
   },
 
   deleteItem: (state, item) => {
-    const category = item.category.slug
+    const category = item.category.value
     const target = state.items[category].findIndex((v) => v.id === item.id)
     state.items[category].splice(target, 1)
   },
