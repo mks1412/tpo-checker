@@ -2,20 +2,28 @@ import { ItemActions } from './types'
 import ItemsRepository from '@/repositories/ItemsRepository'
 
 export const actions: ItemActions = {
-  load: async ({ commit }, category) => {
-    const repository = new ItemsRepository()
+  // forceオプションがなければストアは更新しない
+  load: async ({ commit, state, rootGetters }, { category, force }) => {
+    if (state.items[category] && !force) return
+    const repository = new ItemsRepository(rootGetters['user/uid'])
     const items = await repository.getByCategory(category)
-    commit('setItems', items)
+    console.log(items)
+    commit('setItems', { category, items })
   },
 
-  update: async ({ commit }, item) => {
-    const repository = new ItemsRepository()
+  add: async ({ commit, rootGetters }, item) => {
+    const repository = new ItemsRepository(rootGetters['user/uid'])
+    await repository.add(item)
+  },
+
+  update: async ({ commit, rootGetters }, item) => {
+    const repository = new ItemsRepository(rootGetters['user/uid'])
     await repository.update(item)
-    commit('updateItems', item)
+    commit('updateItem', item)
   },
 
-  delete: async ({ commit }, item) => {
-    const repository = new ItemsRepository()
+  delete: async ({ commit, rootGetters }, item) => {
+    const repository = new ItemsRepository(rootGetters['user/uid'])
     await repository.delete(item.id)
     commit('deleteItems', item)
   },

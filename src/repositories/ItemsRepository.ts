@@ -1,12 +1,12 @@
 import FirestoreGatewey, { Condition, Operators } from '@/gateways/FirestoreGateway'
-import { ItemEntity, ItemDocument } from '@/entities/Item'
-import { SelectableOption } from '~/entities/User'
+import { ItemEntity, ItemDocument, ItemParams } from '@/entities/Item'
+import { SelectableOption } from '@/entities/User'
 
 export default class ItemsRepository {
   private firestoreGateway: FirestoreGatewey
 
-  public constructor() {
-    this.firestoreGateway = new FirestoreGatewey('items')
+  public constructor(userId: string) {
+    this.firestoreGateway = new FirestoreGatewey(`users/${userId}/items`)
   }
 
   public async getById(id: string): Promise<ItemEntity> {
@@ -14,17 +14,17 @@ export default class ItemsRepository {
     return { id: document.id, ...document.data }
   }
 
-  public async getByCategory(category: SelectableOption): Promise<ItemEntity[]> {
+  public async getByCategory(category: string): Promise<ItemEntity[]> {
     const condition: Condition = {
       field: 'category.value',
       operator: Operators.Equal,
-      value: category.value
+      value: category
     }
     const documents = await this.firestoreGateway.get<ItemDocument>([condition])
     return documents.map((document) => ({ id: document.id, ...document.data }))
   }
 
-  public async add(item: ItemEntity): Promise<void> {
+  public async add(item: ItemParams): Promise<void> {
     await this.firestoreGateway.add(item)
   }
 

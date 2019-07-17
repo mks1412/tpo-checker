@@ -8,9 +8,24 @@ export interface ItemEntity {
   size: string
   color: string
   memo: string
-  purchasedAt: Date
+  image: string
+  purchasedYear: number | null
+  purchasedMonth: number | null
   category: SelectableOption
   subcategory: SelectableOption
+}
+
+export interface ItemParams {
+  name: string
+  brand: string
+  size: string
+  color: string
+  memo: string
+  image: string
+  purchasedYear: number | null
+  purchasedMonth: number | null
+  category: SelectableOption | null
+  subcategory: SelectableOption | null
 }
 
 export interface ItemDocument extends FirestoreDocument {
@@ -19,7 +34,9 @@ export interface ItemDocument extends FirestoreDocument {
   size: string
   color: string
   memo: string
-  purchasedAt: Date
+  image: string
+  purchasedYear: number | null
+  purchasedMonth: number | null
   category: SelectableOption
   subcategory: SelectableOption
 }

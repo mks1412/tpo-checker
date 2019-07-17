@@ -13,9 +13,11 @@ export const MOCK_ITEMS: ItemEntity[] = [
     brand: 'hoge',
     size: 'M',
     color: '#fff',
+    image: '',
     category: category1,
     subcategory: category2,
-    purchasedAt: new Date(),
+    purchasedYear: 2019,
+    purchasedMonth: 7,
     memo: 'hoge'
   },
   {
@@ -24,9 +26,11 @@ export const MOCK_ITEMS: ItemEntity[] = [
     brand: 'fuga',
     size: 'S',
     color: '#000',
+    image: '',
     category: category2,
     subcategory: category1,
-    purchasedAt: new Date(),
+    purchasedYear: 2017,
+    purchasedMonth: 4,
     memo: 'fuga'
   }
 ]

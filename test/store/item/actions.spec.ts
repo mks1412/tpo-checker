@@ -57,7 +57,7 @@ describe('Item actions', () => {
 
   describe('load', () => {
     beforeEach(async () => {
-      await actions.load(actionCxt, category)
+      await actions.load(actionCxt, { category: category.value as string })
     })
 
     test('commits "setItems with response"', () => {
