@@ -23,7 +23,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import BaseInput, { SelectableOption } from '@/components/atoms/BaseInput.vue'
+import BaseInput from '@/components/atoms/BaseInput.vue'
+import { SelectableOption } from '@/entities/User'
 
 @Component({ components: { BaseInput } })
 export default class SelectBox extends Vue {

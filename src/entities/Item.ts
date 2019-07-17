@@ -1,9 +1,5 @@
 import { FirestoreDocument } from '@/gateways/FirestoreGateway'
-
-export interface ItemCategory {
-  label: string
-  slug: string
-}
+import { SelectableOption } from '@/entities/User'
 
 export interface ItemEntity {
   id: string
@@ -13,7 +9,8 @@ export interface ItemEntity {
   color: string
   memo: string
   purchasedAt: Date
-  category: ItemCategory
+  category: SelectableOption
+  subcategory: SelectableOption
 }
 
 export interface ItemDocument extends FirestoreDocument {
@@ -23,5 +20,6 @@ export interface ItemDocument extends FirestoreDocument {
   color: string
   memo: string
   purchasedAt: Date
-  category: ItemCategory
+  category: SelectableOption
+  subcategory: SelectableOption
 }

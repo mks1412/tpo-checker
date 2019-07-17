@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import { SelectableOption } from '@/components/atoms/BaseInput.vue'
+import { SelectableOption } from '@/entities/User'
 
 @Component({})
 export default class SegmentedControl extends Vue {

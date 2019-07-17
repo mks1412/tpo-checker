@@ -1,5 +1,10 @@
 import { FirestoreDocument } from '@/gateways/FirestoreGateway'
 
+export interface SelectableOption {
+  label: string
+  value: string | number
+}
+
 export interface UserAuthInfo {
   email: string
   password: string
