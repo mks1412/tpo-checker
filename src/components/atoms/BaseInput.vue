@@ -32,7 +32,6 @@ export default class BaseInput extends Vue {
 .f-input {
   --input-color: #999;
 
-  align-items: flex-start;
   display: flex;
   flex: 1 1 auto;
   flex-wrap: wrap;
@@ -55,11 +54,12 @@ export default class BaseInput extends Vue {
     transform: scale(0.75);
     transform-origin: bottom left;
     white-space: nowrap;
+    width: 100%;
   }
 
   &__field {
     align-items: center;
-    color: #828282;
+    color: #333;
     display: flex;
     min-height: inherit;
     position: relative;
@@ -87,9 +87,11 @@ export default class BaseInput extends Vue {
     display: flex;
     flex: 1 0 auto;
     font-size: 12px;
+    height: 20px;
+    line-height: 20px;
     margin-top: 8px;
-    max-width: 100%;
     overflow: hidden;
+    width: 100%;
   }
 
   &__slot {
