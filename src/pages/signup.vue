@@ -5,13 +5,13 @@
       error-message.mt-4(:message="errorMessage")
       .signup__form
         template(v-if="step === 1")
-          form-large-label(text="Step1. 認証情報を入力してください")
+          form-large-label.mt-6(text="Step1. 認証情報を入力してください")
           user-auth-form.mt-4(v-model="authInfo" buttonLabel="次へ" @submit="nextStep")
         template(v-else-if="step === 2")
-          form-large-label(text="Step2. プロフィールを入力してください")
+          form-large-label.mt-6(text="Step2. プロフィールを入力してください")
           user-profile-form.mt-4(v-model="profile" buttonLabel="次へ" @submit="nextStep")
         template(v-else)
-          form-large-label(text="Step3. お好みのスタイルを選んでください")
+          form-large-label.mt-6(text="Step3. お好みのスタイルを選んでください")
           user-preference-form.mt-4(v-model="profile.preferences" :gender="profile.gender")
           base-button.mt-6(label="完了" small @click="onSubmit")
 </template>

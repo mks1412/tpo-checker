@@ -5,7 +5,8 @@
         loader(color="#08d9d6")
     .content
       global-header
-      nuxt
+      .wrapper
+        nuxt
       navigation-footer
 </template>
 
@@ -43,11 +44,9 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+.wrapper {
+  padding-top: 50px;
+  padding-bottom: 45px;
 }
 
 .fade-enter-active,

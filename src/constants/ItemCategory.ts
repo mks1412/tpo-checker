@@ -59,7 +59,7 @@ const WomensCategories: SelectableOption[] = [
   },
   {
     label: 'ワンピース',
-    value: 'skirt'
+    value: 'dress'
   },
 
   {
@@ -68,5 +68,5 @@ const WomensCategories: SelectableOption[] = [
   }
 ]
 
-export const ItemCategories = (gender: Gender): SelectableOption[] =>
+export const ItemCategories = (gender: Gender | null): SelectableOption[] =>
   gender === Gender.male ? MensCategories : WomensCategories
