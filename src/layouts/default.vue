@@ -3,17 +3,24 @@
     transition(name="fade")
       .h-screen.absolute.top.inset-0.bg-white.flex.items-center.z-50(v-show="loading")
         loader(color="#08d9d6")
-    nuxt
+    .content
+      global-header
+      nuxt
+      navigation-footer
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import Loader from '@/components/atoms/Loader.vue'
+import GlobalHeader from '@/components/molecules/GlobalHeader.vue'
+import NavigationFooter from '@/components/molecules/NavigationFooter.vue'
 import { userModule } from '@/store/user/const'
 
 @Component({
   components: {
-    Loader
+    Loader,
+    GlobalHeader,
+    NavigationFooter
   },
   middleware: ['authenticated']
 })
