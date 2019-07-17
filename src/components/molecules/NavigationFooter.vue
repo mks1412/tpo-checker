@@ -24,18 +24,22 @@ import Logo from '@/components/atoms/Logo.vue'
 })
 export default class NavigationFooter extends Vue {
   get isHome() {
+    if (!this.$route) return false
     return this.$route.name === 'home'
   }
 
   get isRequest() {
+    if (!this.$route) return false
     return this.$route.name === 'request'
   }
 
   get isItems() {
+    if (!this.$route) return false
     return this.$route.name === 'items'
   }
 
   get isMypage() {
+    if (!this.$route) return false
     return this.$route.name === 'mypage'
   }
 }
