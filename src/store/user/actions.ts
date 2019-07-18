@@ -26,6 +26,16 @@ export const actions: UserActions = {
     })
   },
 
+  update: async ({ commit }, params) => {
+    commit('updateUser', params)
+    await repository.setProfile(params.id, params)
+  },
+
+  load: async ({ commit, rootGetters }) => {
+    const profile = await repository.getProfileById(rootGetters['user/uid'])
+    commit('updateUser', profile)
+  },
+
   startLoading: ({ commit }) => {
     commit('setLoading', true)
   },

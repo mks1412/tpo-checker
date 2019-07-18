@@ -87,7 +87,7 @@ export default class Signup extends Vue {
       if (user) {
         this.signup({ ...this.profile, id: user.uid, email: this.authInfo.email })
       }
-      this.$router.push('/mypage')
+      this.$router.push('/settings')
     } catch (e) {
       this.errorMessage = 'エラーが発生しました'
     } finally {

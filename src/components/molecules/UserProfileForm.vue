@@ -7,13 +7,13 @@
       hideDetails
       box
     )
-    segmented-control.mt-4(
+    segmented-control(
       v-model="gender"
       :options="genders"
       name="gender"
       round
     )
-    text-field.mt-4(
+    text-field(
       v-model="age"
       type="number"
       placeholder="年齢"
@@ -22,7 +22,7 @@
       max="150"
       box
     )
-    .flex.mt-4
+    .flex.-mt-6
       text-field.mr-2(
         v-model="height"
         type="number"
@@ -41,7 +41,7 @@
         max="300"
         box
       )
-    base-button.mt-6(
+    base-button.mt-2(
       type="submit"
       :label="buttonLabel"
       :disabled="!isProfileValid"

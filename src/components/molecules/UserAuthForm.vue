@@ -8,7 +8,7 @@
       required
       hideDetails
     )
-    text-field.mt-4(
+    text-field.-mt-8(
       v-model="password"
       type="password"
       placeholder="パスワード"
@@ -17,7 +17,7 @@
       required
       hideDetails
     )
-    base-button.mt-6(
+    base-button(
       type="submit"
       :label="buttonLabel"
       :disabled="!isAuthInfoValid"
