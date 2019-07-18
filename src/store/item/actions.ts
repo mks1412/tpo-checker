@@ -7,7 +7,6 @@ export const actions: ItemActions = {
     if (state.items[category] && !force) return
     const repository = new ItemsRepository(rootGetters['user/uid'])
     const items = await repository.getByCategory(category)
-    console.log(items)
     commit('setItems', { category, items })
   },
 

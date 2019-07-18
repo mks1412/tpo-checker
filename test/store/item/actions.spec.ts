@@ -3,7 +3,7 @@ import { mockState, MOCK_ITEMS } from './mock'
 import { actions } from '@/store/item/actions'
 import { ItemState, ItemActionContext } from '@/store/item/types'
 import { ItemCategories } from '@/constants/ItemCategory'
-import { Gender, SelectableOption } from '@/entities/User'
+import { Gender } from '@/entities/User'
 import { ItemEntity } from '@/entities/Item'
 import ItemsRepository from '~/repositories/ItemsRepository'
 
@@ -11,7 +11,7 @@ let actionCxt: ItemActionContext
 let commit: jest.Mock
 let state: ItemState
 const category = ItemCategories(Gender.male)[0]
-let _category: SelectableOption
+let _category: string
 let _item: ItemEntity
 let _id: string
 
@@ -33,7 +33,7 @@ describe('Item actions', () => {
     // mock ItemsRepository
     mocked(ItemsRepository).mockImplementation((): any => {
       return {
-        getByCategory: (category: SelectableOption): Promise<ItemEntity[]> => {
+        getByCategory: (category: string): Promise<ItemEntity[]> => {
           return new Promise((resolve) => {
             _category = category
             resolve(MOCK_ITEMS)
@@ -57,12 +57,12 @@ describe('Item actions', () => {
 
   describe('load', () => {
     beforeEach(async () => {
-      await actions.load(actionCxt, { category: category.value as string })
+      await actions.load(actionCxt, { category: category.value as string, force: true })
     })
 
     test('commits "setItems with response"', () => {
-      expect(_category).toEqual(category)
-      expect(commit).toHaveBeenCalledWith('setItems', MOCK_ITEMS)
+      expect(_category).toEqual(category.value)
+      expect(commit).toHaveBeenCalledWith('setItems', { category: category.value, items: MOCK_ITEMS })
     })
   })
 
@@ -73,7 +73,7 @@ describe('Item actions', () => {
 
     test('commits "updateItem with response"', () => {
       expect(_item).toEqual(MOCK_ITEMS[0])
-      expect(commit).toHaveBeenCalledWith('updateItems', MOCK_ITEMS[0])
+      expect(commit).toHaveBeenCalledWith('updateItem', MOCK_ITEMS[0])
     })
   })
 
@@ -84,7 +84,7 @@ describe('Item actions', () => {
 
     test('commits "deleteItem with response"', () => {
       expect(_id).toEqual(MOCK_ITEMS[0].id)
-      expect(commit).toHaveBeenCalledWith('deleteItems', MOCK_ITEMS[0])
+      expect(commit).toHaveBeenCalledWith('deleteItem', MOCK_ITEMS[0])
     })
   })
 
