@@ -55,8 +55,7 @@ import TextField from '@/components/atoms/TextField.vue'
 import SelectBox from '@/components/atoms/SelectBox.vue'
 import SegmentedControl from '@/components/atoms/SegmentedControl.vue'
 import BaseButton from '@/components/atoms/BaseButton.vue'
-import { SelectableOption } from '@/components/atoms/BaseInput.vue'
-import { Gender } from '@/entities/User'
+import { Gender, SelectableOption } from '@/entities/User'
 
 export interface UserProfileFormParams {
   name: string

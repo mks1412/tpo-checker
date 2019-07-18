@@ -1,19 +1,27 @@
 <template lang="pug">
-  div
+  .w-full.h-full
     transition(name="fade")
       .h-screen.absolute.top.inset-0.bg-white.flex.items-center.z-50(v-show="loading")
         loader(color="#08d9d6")
-    nuxt
+    .contents
+      global-header
+      .wrapper
+        nuxt
+    navigation-footer
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import Loader from '@/components/atoms/Loader.vue'
+import GlobalHeader from '@/components/molecules/GlobalHeader.vue'
+import NavigationFooter from '@/components/molecules/NavigationFooter.vue'
 import { userModule } from '@/store/user/const'
 
 @Component({
   components: {
-    Loader
+    Loader,
+    GlobalHeader,
+    NavigationFooter
   },
   middleware: ['authenticated']
 })
@@ -36,11 +44,20 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+.contents {
+  position: relative;
+  padding-bottom: 45px;
+  margin-top: constant(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+  padding: 0 0 calc(env(safe-area-inset-bottom) + 45px);
+  padding: 0 0 calc(constant(safe-area-inset-bottom) + 45px);
+}
+
+.wrapper {
+  padding-top: 50px;
+  padding-bottom: 45px;
 }
 
 .fade-enter-active,

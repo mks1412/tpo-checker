@@ -1,38 +1,29 @@
 <template lang="pug">
-  button.f-btn(
+  button.f-float-btn(
     :class="classes"
     :style="styles"
-    :disabled="disabled"
-    :type="type"
     @click="onClick"
   )
-    .f-btn__content
-      | {{ label }}
+    .f-float-btn__content
+      include ../svg/plus.svg
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 @Component({})
-export default class BaseButton extends Vue {
+export default class FloatButton extends Vue {
   @Prop({ type: String, default: '#08d9d6' }) backgroundColor!: string
-  @Prop({ type: Boolean, default: false }) disabled!: boolean
   @Prop({ type: Boolean, default: false }) depressed!: boolean
-  @Prop({ type: Boolean, default: false }) flat!: boolean
   @Prop({ type: String, default: '' }) label!: string
   @Prop({ type: Boolean, default: false }) small!: boolean
-  @Prop({ type: String, default: 'button' }) type!: string
   @Prop({ type: String, default: '#fff' }) textColor!: string
   @Prop({ type: String }) to!: string
-  @Prop({ type: Boolean, default: false }) round!: boolean
 
   get classes(): { [key: string]: boolean } {
     return {
-      'f-btn--disabled': this.disabled,
-      'f-btn--depressed': this.depressed,
-      'f-btn--flat': this.flat,
-      'f-btn--small': this.small,
-      'f-btn--round': this.round
+      'f-float-btn--depressed': this.depressed,
+      'f-float-btn--small': this.small
     }
   }
 
@@ -51,46 +42,35 @@ export default class BaseButton extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.f-btn {
-  --text-color: #fff;
+.f-float-btn {
   --background-color: #08d9d6;
 
-  align-items: center;
   background-color: var(--background-color);
   border: none;
-  border-radius: 5px;
+  border-radius: 999px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
-  color: var(--text-color);
-  display: inline-flex;
-  font-size: 18px;
-  font-weight: 700;
-  height: 48px;
-  justify-content: center;
+  width: 45px;
+  height: 45px;
+  position: fixed;
+  right: 15px;
+  bottom: 60px;
   outline: 0;
-  user-select: none;
-  width: 100%;
-
-  &--round {
-    border-radius: 999px;
-  }
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
+  z-index: 100;
 
   &--small {
-    font-size: 16px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
   }
 
   &--depressed {
     box-shadow: none;
   }
 
-  &--disabled {
-    background-color: rgba(0, 0, 0, 0.12);
-    color: rgba(0, 0, 0, 0.26);
-  }
-
-  &--flat {
-    background-color: transparent;
-    box-shadow: none;
+  &__content {
+    width: 75%;
+    margin: auto;
   }
 }
 </style>
