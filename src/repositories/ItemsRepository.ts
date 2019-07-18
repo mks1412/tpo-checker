@@ -1,6 +1,5 @@
 import FirestoreGatewey, { Condition, Operators } from '@/gateways/FirestoreGateway'
 import { ItemEntity, ItemDocument, ItemParams } from '@/entities/Item'
-import { SelectableOption } from '@/entities/User'
 
 export default class ItemsRepository {
   private firestoreGateway: FirestoreGatewey
