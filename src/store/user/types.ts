@@ -12,6 +12,8 @@ export interface UserActions extends ActionTree<UserState, RootState> {
   signup: (ctx: UserActionContext, params: UserProfileEntity) => void
   signin: (ctx: UserActionContext, user: firebase.User) => void
   signout: (ctx: UserActionContext) => void
+  update: (ctx: UserActionContext, params: UserProfileEntity) => void
+  load: (ctx: UserActionContext, id: string) => void
   startLoading: (ctx: UserActionContext) => void
   endLoading: (ctx: UserActionContext) => void
 }

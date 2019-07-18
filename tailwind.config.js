@@ -11,7 +11,12 @@ module.exports = {
         base: '#08d9d6',
         gray: {
           lightest: '#f2f2f2',
-          lighten: '#828282'
+          lighten: '#828282',
+          500: '#38B2AC',
+          600: '#319795',
+          700: '#2C7A7B',
+          800: '#285E61',
+          900: '#234E52'
         }
       }
     }

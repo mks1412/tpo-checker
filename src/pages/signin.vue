@@ -39,7 +39,7 @@ export default class Index extends Vue {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.$store.dispatch('user/signin', user)
-        this.$router.push('/mypage')
+        this.$router.push('/settings')
       }
     })
   }

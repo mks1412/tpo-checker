@@ -83,14 +83,14 @@ export default class BaseButton extends Vue {
     box-shadow: none;
   }
 
-  &--flat {
-    background-color: transparent;
-    box-shadow: none;
-  }
-
   &--disabled {
     background-color: rgba(0, 0, 0, 0.12);
     color: rgba(0, 0, 0, 0.26);
+  }
+
+  &--flat {
+    background-color: transparent;
+    box-shadow: none;
   }
 }
 </style>

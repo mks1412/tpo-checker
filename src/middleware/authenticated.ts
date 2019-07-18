@@ -3,7 +3,7 @@ import { auth } from '@/lib/firebase'
 
 export default (context: Context) => {
   // StoreにユーザデータがあればOK
-  if (context.store.getters.isAuthenticated) return
+  if (context.store.getters['user/isAuthenticated']) return
 
   // Storeにユーザデータがなければ、Firebase Authenticationをチェック(ローディング画面を表示)
   context.store.dispatch('user/startLoading')
@@ -13,8 +13,9 @@ export default (context: Context) => {
     } else {
       context.redirect('/')
     }
-    setTimeout(() => {
-      context.store.dispatch('user/endLoading')
-    }, 1000)
+    context.store.dispatch('user/endLoading')
+    // setTimeout(() => {
+    //   context.store.dispatch('user/endLoading')
+    // }, 1000)
   })
 }
