@@ -13,7 +13,7 @@
         .flex
           p(class="text-xs text-gray-700 mr-3") サイズ: {{ item.size || 'ー' }}
           p(class="text-xs text-gray-700") 購入時期: {{ puchasedAt }}
-        nuxt-link.edit-btn(:to="`/items/edit/${item.id}`")
+        nuxt-link.edit-btn.text-gray-700(:to="`/items/edit/${item.id}`")
           include ../svg/edit.svg
 </template>
 

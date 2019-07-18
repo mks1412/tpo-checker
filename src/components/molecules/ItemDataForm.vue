@@ -26,6 +26,7 @@ import { SelectableOption, Gender } from '@/entities/User'
 import { ItemCategories } from '@/constants/ItemCategory'
 import { YearOptions, MonthOptions } from '@/constants/Date'
 import { userModule } from '@/store/user/const'
+import { generateUid } from '@/util/uid'
 
 interface ItemParamsDiff {
   name?: string
@@ -80,7 +81,7 @@ export default class ItemDataForm extends Vue {
   }
 
   get uploadPath() {
-    return `users/${this.userId}/items/hoge`
+    return `users/${this.userId}/items/${generateUid()}`
   }
 
   get name() {

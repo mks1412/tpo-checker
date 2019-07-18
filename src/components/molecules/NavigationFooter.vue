@@ -11,7 +11,7 @@
         nuxt-link.navigation-btn(to="/items" :class="{ 'navigation-btn--active': isItems }")
           include ../svg/shirt.svg
       li.navigation-list__item
-        nuxt-link.navigation-btn(to="/mypage" :class="{ 'navigation-btn--active': isMypage }")
+        nuxt-link.navigation-btn(to="/settings" :class="{ 'navigation-btn--active': isSettings }")
           include ../svg/setting.svg
 </template>
 
@@ -38,9 +38,9 @@ export default class NavigationFooter extends Vue {
     return this.$route.path.startsWith('/items')
   }
 
-  get isMypage() {
+  get isSettings() {
     if (!this.$route) return false
-    return this.$route.path.startsWith('/mypage')
+    return this.$route.path.startsWith('/settings')
   }
 }
 </script>

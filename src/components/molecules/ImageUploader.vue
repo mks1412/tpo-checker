@@ -23,13 +23,15 @@ import ImageCroppa from '@/components/molecules/ImageCroppa.vue'
 export default class Logo extends Vue {
   @Prop({ type: String, required: true }) value!: string
   @Prop({ type: String, required: true }) path!: string
-  @Prop({ type: Boolean, default: true }) round!: string
+  @Prop({ type: Boolean, default: true }) round!: boolean
+  @Prop({ type: Boolean, default: false }) circle!: boolean
 
   private modalVisible: boolean = false
 
-  get classes(): { [key: string]: string } {
+  get classes(): { [key: string]: boolean } {
     return {
-      'image-uploader--round': this.round
+      'image-uploader--round': this.round,
+      'image-uploader--circle': this.circle
     }
   }
 
@@ -46,7 +48,6 @@ export default class Logo extends Vue {
   }
 
   private uploaded(url: string) {
-    console.log(url)
     this.$emit('input', url)
     this.closeModal()
   }
