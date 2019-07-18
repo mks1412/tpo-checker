@@ -6,7 +6,9 @@
     :type="type"
     @click="onClick"
   )
-    .f-btn__content
+    .f-btn__content(v-if="loading")
+      include ../svg/dots-loading.svg
+    .f-btn__content(v-else)
       | {{ label }}
 </template>
 
@@ -25,6 +27,7 @@ export default class BaseButton extends Vue {
   @Prop({ type: String, default: '#fff' }) textColor!: string
   @Prop({ type: String }) to!: string
   @Prop({ type: Boolean, default: false }) round!: boolean
+  @Prop({ type: Boolean, default: false }) loading!: boolean
 
   get classes(): { [key: string]: boolean } {
     return {
