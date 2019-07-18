@@ -1,6 +1,11 @@
 <template lang="pug">
-  .home
-    .home__content.w-full.px-6
+  .home.p-6
+    .home__content
+      p
+        | 運営が提供するおすすめコーデの情報やコラムのようなコンテンツのフィードを想定。
+        br
+        | 時間が足りず未実装。
+
 </template>
 
 <script lang="ts">
