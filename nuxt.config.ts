@@ -13,7 +13,10 @@ const config: NuxtConfiguration = {
     title: `${SiteConfig.title} | ${SiteConfig.catchCopy}`,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content: 'content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"'
+      },
       { name: 'theme-color', content: SiteConfig.color },
       { hid: 'description', name: 'description', content: SiteConfig.description },
       { hid: 'og:site_name', property: 'og:site_name', content: SiteConfig.title },

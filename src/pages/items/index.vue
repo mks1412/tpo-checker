@@ -87,6 +87,7 @@ export default class Items extends Vue {
 <style lang="scss" scoped>
 .items {
   padding-top: 40px;
+  height: 1000px;
 
   &__nav {
     width: 100%;

@@ -55,8 +55,8 @@ export default class FloatButton extends Vue {
   right: 15px;
   bottom: 60px;
   outline: 0;
-  padding-bottom: constant(safe-area-inset-bottom);
-  padding-bottom: env(safe-area-inset-bottom);
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
   z-index: 100;
 
   &--small {

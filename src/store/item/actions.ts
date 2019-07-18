@@ -25,7 +25,7 @@ export const actions: ItemActions = {
   delete: async ({ commit, rootGetters }, item) => {
     const repository = new ItemsRepository(rootGetters['user/uid'])
     await repository.delete(item.id)
-    commit('deleteItems', item)
+    commit('deleteItem', item)
   },
 
   startLoading: ({ commit }) => {

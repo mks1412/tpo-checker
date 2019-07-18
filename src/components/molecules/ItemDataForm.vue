@@ -73,6 +73,12 @@ export default class ItemDataForm extends Vue {
     }
   }
 
+  mounted() {
+    if (this.value.category && this.value.category.value) {
+      this.categoryId = this.value.category.value as string
+    }
+  }
+
   get uploadPath() {
     return `users/${this.userId}/items/hoge`
   }

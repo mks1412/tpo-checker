@@ -9,9 +9,12 @@
       .w-full
         p(v-if="item.brand" class="text-xs text-gray-700") {{ item.brand }}
         p(class="text-sm text-gray-900") {{ item.name }}
-      .w-full.flex
-        p(class="text-xs text-gray-700 mr-3") サイズ: {{ item.size || 'ー' }}
-        p(class="text-xs text-gray-700") 購入時期: {{ puchasedAt }}
+      .w-full.flex.justify-between
+        .flex
+          p(class="text-xs text-gray-700 mr-3") サイズ: {{ item.size || 'ー' }}
+          p(class="text-xs text-gray-700") 購入時期: {{ puchasedAt }}
+        nuxt-link.edit-btn(:to="`/items/edit/${item.id}`")
+          include ../svg/edit.svg
 </template>
 
 <script lang="ts">
@@ -62,6 +65,12 @@ export default class ItemCard extends Vue {
     &.noimage {
       background-image: url('~assets/images/noimage.jpg');
     }
+  }
+
+  .edit-btn {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
   }
 }
 </style>

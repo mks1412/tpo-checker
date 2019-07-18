@@ -52,10 +52,10 @@ export default class NavigationFooter extends Vue {
   position: fixed;
   left: 0;
   bottom: 0;
-  padding-bottom: constant(safe-area-inset-bottom);
-  padding-bottom: env(safe-area-inset-bottom);
   width: 100%;
   z-index: 100;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 
   &:before {
     content: '';

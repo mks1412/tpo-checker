@@ -1,13 +1,13 @@
 <template lang="pug">
-  div
+  .w-full.h-full
     transition(name="fade")
       .h-screen.absolute.top.inset-0.bg-white.flex.items-center.z-50(v-show="loading")
         loader(color="#08d9d6")
-    .content
+    .contents
       global-header
       .wrapper
         nuxt
-      navigation-footer
+    navigation-footer
 </template>
 
 <script lang="ts">
@@ -42,6 +42,17 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+
+.contents {
+  position: relative;
+  padding-bottom: 45px;
+  margin-top: constant(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+  padding: 0 0 calc(env(safe-area-inset-bottom) + 45px);
+  padding: 0 0 calc(constant(safe-area-inset-bottom) + 45px);
 }
 
 .wrapper {
