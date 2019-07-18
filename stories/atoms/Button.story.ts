@@ -17,6 +17,7 @@ storiesOf('Atoms', module)
       <BaseButton class="mb-4" label="Small" small />
       <BaseButton class="mb-4" label="Flat" flat :textColor="textColor" />
       <BaseButton class="mb-4" label="Disabled" disabled />
+      <BaseButton class="mb-4" label="Loading" loading />
     </div>
   `,
       data() {

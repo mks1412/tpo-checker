@@ -5,7 +5,7 @@
         nuxt-link.navigation-btn(to="/home" :class="{ 'navigation-btn--active': isHome }")
           include ../svg/home.svg
       li.navigation-list__item
-        nuxt-link.navigation-btn(to="/request" :class="{ 'navigation-btn--active': isRequest }")
+        nuxt-link.navigation-btn(to="/requests" :class="{ 'navigation-btn--active': isRequest }")
           include ../svg/add.svg
       li.navigation-list__item
         nuxt-link.navigation-btn(to="/items" :class="{ 'navigation-btn--active': isItems }")
@@ -30,7 +30,7 @@ export default class NavigationFooter extends Vue {
 
   get isRequest() {
     if (!this.$route) return false
-    return this.$route.path.startsWith('/request')
+    return this.$route.path.startsWith('/requests')
   }
 
   get isItems() {

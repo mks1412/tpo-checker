@@ -59,3 +59,8 @@ Nuxtを利用しているため基本的にNuxtのディレクトリ構成に従
 ### repositories
 - 各リソースに対して必要なリクエストをgatewayを用いて具体的に実装
 - gatewayで取得したデータをentityにマッピング
+
+
+## デモユーザーアカウント
+
+hoge@gmail.com / hogehoge

@@ -10,7 +10,7 @@ export const actions: ItemActions = {
     commit('setItems', { category, items })
   },
 
-  add: async ({ commit, rootGetters }, item) => {
+  add: async ({ rootGetters }, item) => {
     const repository = new ItemsRepository(rootGetters['user/uid'])
     await repository.add(item)
   },
