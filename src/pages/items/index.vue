@@ -20,6 +20,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'nuxt-property-decorator'
+import { NoCache } from '../../plugins/decorators'
 import { ItemEntity } from '@/entities/Item'
 import BaseButton from '@/components/atoms/BaseButton.vue'
 import Loader from '@/components/atoms/Loader.vue'
@@ -52,34 +53,26 @@ export default class Items extends Vue {
   @itemModule.Action('load')
   private load!: (params: { category: string; force?: boolean }) => Promise<void>
 
+  @itemModule.State('loading')
+  private isLoading!: boolean
+
   @Watch('activeCategory')
   onChangeActiveCateogry(category: string) {
     if (this.items[category]) return
-    this.isLoading = true
-    this.load({ category }).finally(() => (this.isLoading = false))
+    this.load({ category })
   }
 
-  private isLoading: boolean = false
   private activeCategory: string = 'tops'
   private categories: SelectableOption[] = ItemCategories(this.gender)
 
+  @NoCache
   get activeItems() {
-    return this.items[this.activeCategory] || []
-  }
-
-  fetch(ctx: { query: any }) {
-    if (ctx.query.cetegory) {
-      console.log(ctx.query)
-      this.isLoading = true
-      this.load({ category: ctx.query.category, force: true })
-    }
+    const items = this.items
+    return items[this.activeCategory] || []
   }
 
   mounted() {
-    this.isLoading = true
-    setTimeout(() => {
-      this.load({ category: this.activeCategory }).finally(() => (this.isLoading = false))
-    }, 1000)
+    setTimeout(() => this.load({ category: this.activeCategory }), 0)
   }
 }
 </script>

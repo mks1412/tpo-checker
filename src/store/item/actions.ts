@@ -3,28 +3,56 @@ import ItemsRepository from '@/repositories/ItemsRepository'
 
 export const actions: ItemActions = {
   // forceオプションがなければストアは更新しない
-  load: async ({ commit, state, rootGetters }, { category, force }) => {
+  load: async ({ commit, state, dispatch, rootGetters }, { category, force }) => {
     if (state.items[category] && !force) return
-    const repository = new ItemsRepository(rootGetters['user/uid'])
-    const items = await repository.getByCategory(category)
-    commit('setItems', { category, items })
+    dispatch('startLoading')
+    try {
+      const repository = new ItemsRepository(rootGetters['user/uid'])
+      const items = await repository.getByCategory(category)
+      commit('setItems', { category, items })
+    } catch (e) {
+      throw e
+    } finally {
+      dispatch('endLoading')
+    }
   },
 
-  add: async ({ rootGetters }, item) => {
-    const repository = new ItemsRepository(rootGetters['user/uid'])
-    await repository.add(item)
+  add: async ({ dispatch, rootGetters }, item) => {
+    dispatch('startLoading')
+    try {
+      const repository = new ItemsRepository(rootGetters['user/uid'])
+      await repository.add(item)
+    } catch (e) {
+      throw e
+    } finally {
+      dispatch('endLoading')
+    }
   },
 
-  update: async ({ commit, rootGetters }, item) => {
-    const repository = new ItemsRepository(rootGetters['user/uid'])
-    await repository.update(item)
-    commit('updateItem', item)
+  update: async ({ commit, dispatch, rootGetters }, item) => {
+    dispatch('startLoading')
+    try {
+      const repository = new ItemsRepository(rootGetters['user/uid'])
+      await repository.update(item)
+      commit('updateItem', item)
+    } catch (e) {
+      throw e
+    } finally {
+      dispatch('endLoading')
+    }
   },
 
-  delete: async ({ commit, rootGetters }, item) => {
-    const repository = new ItemsRepository(rootGetters['user/uid'])
-    await repository.delete(item.id)
-    commit('deleteItem', item)
+  delete: async ({ commit, dispatch, rootGetters }, item) => {
+    dispatch('startLoading')
+    try {
+      const repository = new ItemsRepository(rootGetters['user/uid'])
+      await repository.delete(item.id)
+      commit('deleteItem', item)
+    } catch (e) {
+      throw e
+    } finally {
+      dispatch('endLoading')
+    }
   },
 
   startLoading: ({ commit }) => {

@@ -30,7 +30,7 @@ export default class Requests extends Vue {
   private load!: (force: boolean) => Promise<void>
 
   mounted() {
-    this.load(true)
+    setTimeout(() => this.load(true), 0)
   }
 }
 </script>
