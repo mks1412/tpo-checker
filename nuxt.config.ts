@@ -31,7 +31,10 @@ const config: NuxtConfiguration = {
       { hid: 'twitter:image', property: 'twitter:image', content: `${SiteConfig.url}/${SiteConfig.ogImage}` },
       { hid: 'twitter:desc', property: 'twitter:description', content: SiteConfig.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
+    ]
   },
   /*
    ** Customize the progress-bar color

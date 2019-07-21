@@ -15,7 +15,8 @@
       template(v-else)
         empty-state(:src="require('@/assets/images/hanger.png')" title="Closet is empty" caption="ファッションアイテムを登録できます")
 
-    float-button(to="/items/new")
+    float-button(to="/items/dashboard" position="left" icon="bar_chart")
+    float-button(to="/items/new" position="right" icon="add")
 </template>
 
 <script lang="ts">
