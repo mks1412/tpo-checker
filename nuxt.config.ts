@@ -55,7 +55,7 @@ const config: NuxtConfiguration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/environments.ts', '@/plugins/vue-croppa.ts'],
+  plugins: ['@/plugins/environments.ts', '@/plugins/vue-croppa.ts', '@/plugins/persistedstate.ts'],
   /*
    ** Nuxt.js modules
    */
