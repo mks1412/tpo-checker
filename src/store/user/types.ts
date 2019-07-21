@@ -1,8 +1,9 @@
 import { ActionTree, ActionContext, MutationTree, GetterTree } from 'vuex'
 import { RootState } from '../types'
-import { UserProfileEntity, UserParams } from '@/entities/User'
+import { UserProfileEntity, UserParams, FirebaseUserData } from '@/entities/User'
 
 export interface UserState {
+  fbdata: FirebaseUserData
   profile: UserProfileEntity
   loading: boolean
 }
@@ -19,6 +20,7 @@ export interface UserActions extends ActionTree<UserState, RootState> {
 }
 
 export interface UserMutations extends MutationTree<UserState> {
+  setFirebaseUserData: (state: UserState, user: FirebaseUserData) => void
   setUser: (state: UserState, user: UserProfileEntity) => void
   updateUser: (state: UserState, params: UserParams) => void
   setLoading: (state: UserState, loading: boolean) => void

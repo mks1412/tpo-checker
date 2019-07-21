@@ -32,6 +32,7 @@ export const mockUserProfile = (index: number = 0): UserProfileEntity => {
 
 export const mockState = (index: number = 0): UserState => {
   return {
+    fbdata: { email: '', id: '' },
     profile: mockUserProfile(index),
     loading: false
   }

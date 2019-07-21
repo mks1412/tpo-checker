@@ -24,6 +24,7 @@
 </template>
 
 <script lang="ts">
+import { setTimeout } from 'timers'
 import { Component, Vue } from 'nuxt-property-decorator'
 import { UserProfileEntity } from '@/entities/User'
 import BaseButton from '@/components/atoms/BaseButton.vue'
@@ -45,13 +46,13 @@ export default class Settings extends Vue {
   private profile!: UserProfileEntity
 
   @userModule.Action('load')
-  private load!: () => void
+  private load!: () => Promise<void>
 
   @userModule.Action('signout')
   private signout!: () => void
 
   mounted() {
-    this.load()
+    setTimeout(() => this.load(), 0)
   }
 
   private onSignoutButtonClicked() {

@@ -10,6 +10,14 @@ describe('User mutations', () => {
     state = mockState()
   })
 
+  describe('set firebase user data', () => {
+    const fbdata = { id: 'hoge', email: 'hoge@gmail.com' }
+    test('works', () => {
+      mutations.setFirebaseUserData(state, fbdata)
+      expect(state.fbdata).toEqual(fbdata)
+    })
+  })
+
   describe('set user', () => {
     const newUser: UserProfileEntity = mockUserProfile(1)
     test('works', () => {

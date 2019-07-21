@@ -14,8 +14,5 @@ export default (context: Context) => {
       context.redirect('/')
     }
     context.store.dispatch('user/endLoading')
-    // setTimeout(() => {
-    //   context.store.dispatch('user/endLoading')
-    // }, 1000)
   })
 }
