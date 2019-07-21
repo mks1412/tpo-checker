@@ -5,10 +5,11 @@
         image-uploader(v-model="image" :path="uploadPath")
     text-field.mt-2(v-model="name" label="名称" required)
     text-field.mt-2(v-model="brand" label="ブランド")
-    select-box.mr-2(v-model="categoryId" :options="categories" label="カテゴリ" required)
     .flex.mt-2
-      text-field.mr-2(v-model="size" label="サイズ" class="w-1/2")
-      text-field(v-model="color" label="色" class="w-1/2")
+      select-box.mr-2(v-model="categoryId" :options="categories" label="カテゴリ" required class="w-1/2")
+      text-field(v-model="size" label="サイズ" class="w-1/2")
+    text-field(:value="color.label" label="色" readonly)
+    selectable-color(v-model="color")
     .flex.mt-2
       select-box.mr-2(v-model="purchasedYear" :options="yearOptions" type="number" label="購入時期" class="w-1/2" nullable)
       select-box(v-model="purchasedMonth" :options="monthOptions" type="number" class="w-1/2" nullable)
@@ -21,6 +22,7 @@ import { ItemParams } from '@/entities/Item'
 import TextField from '@/components/atoms/TextField.vue'
 import SelectBox from '@/components/atoms/SelectBox.vue'
 import BaseButton from '@/components/atoms/BaseButton.vue'
+import SelectableColor from '@/components/atoms/SelectableColor.vue'
 import ImageUploader from '@/components/molecules/ImageUploader.vue'
 import { SelectableOption, Gender } from '@/entities/User'
 import { ItemCategories } from '@/constants/ItemCategory'
@@ -32,7 +34,7 @@ interface ItemParamsDiff {
   name?: string
   brand?: string
   size?: string
-  color?: string
+  color?: SelectableOption
   memo?: string
   image?: string
   purchasedYear?: number | null
@@ -46,7 +48,8 @@ interface ItemParamsDiff {
     TextField,
     SelectBox,
     BaseButton,
-    ImageUploader
+    ImageUploader,
+    SelectableColor
   }
 })
 export default class ItemDataForm extends Vue {
@@ -112,7 +115,7 @@ export default class ItemDataForm extends Vue {
     return this.value.color
   }
 
-  set color(color: string) {
+  set color(color: SelectableOption) {
     this.updateValue({ color })
   }
 

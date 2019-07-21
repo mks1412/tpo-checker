@@ -7,6 +7,7 @@
         v-model="text"
         :type="type"
         :placeholder="placeholder"
+        :readonly="readonly"
         :required="required"
         :min="min"
         :max="max"
@@ -38,6 +39,7 @@ export default class TextField extends Vue {
   @Prop({ type: String }) maxlength!: string
   @Prop({ type: String }) pattern!: string
   @Prop({ type: String }) placeholder!: string
+  @Prop({ type: Boolean, default: false }) readonly!: boolean
   @Prop({ type: Boolean, default: false }) required!: boolean
   @Prop({ type: String }) suffix!: string
   @Prop({ type: String, default: 'text' }) type!: string
