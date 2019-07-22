@@ -19,6 +19,11 @@ service cloud.firestore {
         allow write: if isAuthenticated() && isSelf()
       }
 
+      match /item-analytics/{analyticsId} {
+        allow read: if isAuthenticated()
+        allow write: if isAuthenticated() && isSelf()
+      }
+
       match /requests/{requestId} {
         allow read: if isAuthenticated()
         allow write: if isAuthenticated() && isSelf()
