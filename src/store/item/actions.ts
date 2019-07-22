@@ -2,9 +2,7 @@ import { ItemActions } from './types'
 import ItemsRepository from '@/repositories/ItemsRepository'
 
 export const actions: ItemActions = {
-  // forceオプションがなければストアは更新しない
-  load: async ({ commit, state, dispatch, rootGetters }, { category, force }) => {
-    if (state.items[category] && !force) return
+  load: async ({ commit, dispatch, rootGetters }, { category, force }) => {
     dispatch('startLoading')
     try {
       const repository = new ItemsRepository(rootGetters['user/uid'])

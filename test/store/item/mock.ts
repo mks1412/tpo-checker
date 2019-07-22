@@ -33,8 +33,8 @@ export const MOCK_ITEMS: ItemEntity[] = [
       value: '#fbfbfb'
     },
     image: '',
-    category: category2,
-    subcategory: category1,
+    category: category1,
+    subcategory: category2,
     purchasedYear: 2017,
     purchasedMonth: 4,
     memo: 'fuga'
