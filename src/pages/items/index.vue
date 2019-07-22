@@ -59,7 +59,6 @@ export default class Items extends Vue {
 
   @Watch('activeCategory')
   onChangeActiveCateogry(category: string) {
-    if (this.items[category]) return
     this.load({ category })
   }
 

@@ -3,13 +3,16 @@
     "module": "commonjs",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "outDir": "lib",
+    "outDir": "./",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017"
+    "target": "es6"
   },
   "compileOnSave": true,
   "include": [
-    "src"
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modeles"
   ]
 }
