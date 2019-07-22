@@ -13,3 +13,9 @@ export const LateInit = createDecorator((options, key) => {
     }
   ]
 })
+
+export const NoCache = createDecorator((options, key) => {
+  if (!options.computed) return
+  // @ts-ignore
+  options.computed[key].cache = false
+})

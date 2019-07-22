@@ -5,6 +5,8 @@ describe('User state', () => {
   describe('initState', () => {
     test('works', () => {
       const state = initState()
+      expect(state.fbdata.id).toEqual('')
+      expect(state.fbdata.email).toEqual('')
       expect(state.profile.id).toEqual('')
       expect(state.profile.email).toEqual('')
       expect(state.profile.name).toEqual('')

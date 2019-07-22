@@ -2,6 +2,10 @@ import { UserState } from './types'
 import { Gender } from '@/entities/User'
 
 export const initState = (): UserState => ({
+  fbdata: {
+    id: '',
+    email: ''
+  },
   profile: {
     id: '',
     email: '',

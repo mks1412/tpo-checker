@@ -7,7 +7,7 @@
           request-card.mb-3(:request="req")
     p.mt-6
       | 依頼に対して運営がコーデを提案し、完了した依頼をタップしたら詳細ページへ遷移して提案コーデを閲覧できる想定。時間が足りず未実装。
-    float-button(to="/requests/new")
+    float-button(to="/requests/new" icon="add")
 </template>
 
 <script lang="ts">
@@ -30,7 +30,7 @@ export default class Requests extends Vue {
   private load!: (force: boolean) => Promise<void>
 
   mounted() {
-    this.load(true)
+    setTimeout(() => this.load(true), 0)
   }
 }
 </script>

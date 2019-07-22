@@ -15,6 +15,7 @@ storiesOf('Atoms', module)
       <TextField class="mb-4" placeholder="Password" label="Password" type="password" />
       <TextField class="mb-4" placeholder="Suffix" suffix="cm" type="number" :min="min" :max="max" />
       <TextField class="mb-4" placeholder="Box" box required />
+      <TextField class="mb-4" placeholder="Read Only" readonly />
     </div>
   `,
       data() {

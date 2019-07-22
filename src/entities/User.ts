@@ -5,6 +5,11 @@ export interface SelectableOption {
   value: string | number
 }
 
+export interface FirebaseUserData {
+  id: string
+  email: string
+}
+
 export interface UserAuthInfo {
   email: string
   password: string
