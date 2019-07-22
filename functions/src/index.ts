@@ -13,7 +13,7 @@ const db = firebaseAdmin.firestore()
 const settings = { timestampsInSnapshots: true }
 db.settings(settings)
 
-exports.onItemUpdated = functions
+exports.onItemCreated = functions
   .region('asia-northeast1')
   .firestore.document('users/{userId}/items/{itemId}')
   .onCreate((snapshot, context) => {
@@ -77,7 +77,7 @@ exports.onItemUpdated = functions
         transaction.set(itemAnalyticsRef.doc(), purchaseHistory)
       } else {
         const purchaseHistory = byPurchasedAt.docs[0].data() as PurchaseHistoryEntity
-        purchaseHistory.data[item.purchasedMonth - 1] = purchaseHistory.data[item.purchasedMonth - 1] + 1
+        purchaseHistory.data.splice(item.purchasedMonth - 1, 1, purchaseHistory.data[item.purchasedMonth - 1] + 1)
         transaction.set(byPurchasedAt.docs[0].ref, purchaseHistory)
       }
     })
@@ -128,7 +128,6 @@ exports.onItemUpdated = functions
             } else {
               newBreakdown.data.push({ name: newValue.category.label, y: 1 })
             }
-            console.log('new category breakdown', newBreakdown)
 
             return transaction.set(snapshot.docs[0].ref, newBreakdown)
           }
@@ -168,8 +167,6 @@ exports.onItemUpdated = functions
               newBreakdown.data.push({ name: newValue.category.label, y: 1 })
               newBreakdown.colors.push(newValue.color.value)
             }
-            console.log('new category breakdown', newBreakdown)
-
             return transaction.set(snapshot.docs[0].ref, newBreakdown)
           }
         })
@@ -199,11 +196,11 @@ exports.onItemUpdated = functions
             type: ItemAnalyticsType.byPurchasedAt,
             year: newYear
           }
-          newHistory.data[newMonth - 1] = 1
+          newHistory.data.splice(newMonth - 1, 1, 1)
           transaction.set(itemAnalyticsRef.doc(), newHistory)
         } else {
           const newHistory = newYearSnapshot.docs[0].data() as PurchaseHistoryEntity
-          newHistory.data[newMonth - 1] = newHistory.data[newMonth - 1] + 1
+          newHistory.data.splice(newMonth - 1, 1, newHistory.data[newMonth - 1] + 1)
           transaction.set(newYearSnapshot.docs[0].ref, newHistory)
         }
       })
