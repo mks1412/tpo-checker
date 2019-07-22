@@ -1,5 +1,5 @@
 <template lang="pug">
-  .item-category-chart.shadow.py-2
+  .item-color-chart.shadow.py-2
     transition(name="fade")
       .loader-wrapper(v-show="analytics.loading")
         loader(color="#08d9d6")
@@ -12,14 +12,14 @@ import { Chart } from 'highcharts-vue'
 import * as Highcharts from 'highcharts'
 import Loader from '@/components/atoms/Loader.vue'
 import { analyticsModule } from '@/store/analytics/const'
-import { BreakdownOfCategoryEntity } from '@/entities/ItemAnalytics'
+import { BreakdownOfColorEntity } from '@/entities/ItemAnalytics'
 
 @Component({ components: { Loader, Chart } })
-export default class ItemCategoryChart extends Vue {
-  @analyticsModule.State('byCategory')
-  private analytics!: { loading: boolean; entity: BreakdownOfCategoryEntity }
+export default class ItemColorChart extends Vue {
+  @analyticsModule.State('byColor')
+  private analytics!: { loading: boolean; entity: BreakdownOfColorEntity }
 
-  @analyticsModule.Action('loadByCategory')
+  @analyticsModule.Action('loadByColor')
   private load!: () => Promise<void>
 
   mounted() {
@@ -29,12 +29,13 @@ export default class ItemCategoryChart extends Vue {
   get chartOptions(): Highcharts.Options {
     return {
       title: {
-        text: 'カテゴリ内訳',
+        text: 'カラー内訳',
         style: { color: '#333333', fontSize: '18px', fontWeight: 'bold' }
       },
       chart: {
         type: 'pie'
       },
+      colors: this.analytics.entity.colors,
       credits: {
         enabled: false
       },
@@ -54,13 +55,14 @@ export default class ItemCategoryChart extends Vue {
             enabled: false
           },
           showInLegend: true,
+          size: '100%',
           shadow: true
         }
       },
       series: [
         {
           type: 'pie',
-          name: 'カテゴリ',
+          name: '色',
           data: this.analytics.entity.data
         }
       ]
@@ -70,7 +72,7 @@ export default class ItemCategoryChart extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.item-category-chart {
+.item-color-chart {
   position: relative;
 
   .loader-wrapper {

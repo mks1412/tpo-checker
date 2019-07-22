@@ -1,25 +1,34 @@
 <template lang="pug">
   .item-purchase-chart.shadow.py-2
-    button.item-purchase-chart__control.item-purchase-chart__control--left(v-if="prevEnabled" @click="prevYear" :disabled="loading")
+    button.item-purchase-chart__control.item-purchase-chart__control--left(v-if="prevEnabled" @click="prevYear" :disabled="analytics.loading")
       i.material-icons chevron_left
-    button.item-purchase-chart__control.item-purchase-chart__control--right(v-if="nextEnabled" @click="nextYear" :disabled="loading")
+    button.item-purchase-chart__control.item-purchase-chart__control--right(v-if="nextEnabled" @click="nextYear" :disabled="analytics.loading")
       i.material-icons chevron_right
     transition(name="fade")
-      .loader-wrapper(v-show="loading")
+      .loader-wrapper(v-show="analytics.loading")
         loader(color="#08d9d6")
     chart(:options="chartOptions")
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'nuxt-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import { Chart } from 'highcharts-vue'
 import * as Highcharts from 'highcharts'
 import Loader from '@/components/atoms/Loader.vue'
+import { analyticsModule } from '@/store/analytics/const'
+import { PurchaseHistoryEntity } from '@/entities/ItemAnalytics'
 
 @Component({ components: { Loader, Chart } })
 export default class ItemPurchaseChart extends Vue {
-  @Prop({ type: Array, default: () => [] }) data!: number[]
-  @Prop({ type: Boolean, default: false }) loading!: boolean
+  @analyticsModule.State('byPurchasedAt')
+  private analytics!: { loading: boolean; entity: PurchaseHistoryEntity }
+
+  @analyticsModule.Action('loadByPurchasedAt')
+  private load!: (year: number) => Promise<void>
+
+  mounted() {
+    setTimeout(() => this.load(this.year), 0)
+  }
 
   private year: number = new Date().getFullYear()
 
@@ -53,6 +62,8 @@ export default class ItemPurchaseChart extends Vue {
         categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
       },
       yAxis: {
+        softMax: 10,
+        min: 0,
         title: {
           text: ''
         },
@@ -71,7 +82,7 @@ export default class ItemPurchaseChart extends Vue {
         {
           type: 'column',
           name: `${this.year}年`,
-          data: this.data
+          data: this.analytics.entity.data
         }
       ]
     }
@@ -79,12 +90,12 @@ export default class ItemPurchaseChart extends Vue {
 
   private nextYear() {
     this.year = this.year + 1
-    this.$emit('change', this.year)
+    this.load(this.year)
   }
 
   private prevYear() {
     this.year = this.year - 1
-    this.$emit('change', this.year)
+    this.load(this.year)
   }
 }
 </script>

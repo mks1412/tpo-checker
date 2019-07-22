@@ -46,7 +46,6 @@ export const actions: ItemAnalyticsActions = {
       const entity = await repository.get({ field: 'year', operator: Operators.Equal, value: year })
       commit('setPurchaseHistory', entity || { data: initState().byPurchasedAt.entity.data, year })
     } catch (e) {
-      console.log(e)
       throw e
     } finally {
       dispatch('endLoading', type)
