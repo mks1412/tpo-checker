@@ -23,7 +23,10 @@ export default class NewItem extends Vue {
     name: '',
     brand: '',
     size: '',
-    color: '',
+    color: {
+      label: 'ホワイト',
+      value: '#fbfbfb'
+    },
     memo: '',
     image: '',
     purchasedYear: new Date().getFullYear(),

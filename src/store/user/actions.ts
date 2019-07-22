@@ -7,17 +7,13 @@ const repository = new UsersRepository()
 
 export const actions: UserActions = {
   signup: async ({ commit }, params) => {
+    commit('setFirebaseUserData', { id: params.id, email: params.email })
     commit('updateUser', params)
     await repository.setProfile(params.id, params)
   },
 
   signin: ({ commit }, user) => {
-    commit('updateUser', {
-      id: user.uid,
-      name: user.displayName,
-      email: user.email,
-      photoURL: user.photoURL
-    })
+    commit('setFirebaseUserData', { id: user.uid, email: user.email })
   },
 
   signout: ({ commit }) => {

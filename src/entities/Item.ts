@@ -6,7 +6,7 @@ export interface ItemEntity {
   name: string
   brand: string
   size: string
-  color: string
+  color: SelectableOption
   memo: string
   image: string
   purchasedYear: number | null
@@ -19,7 +19,7 @@ export interface ItemParams {
   name: string
   brand: string
   size: string
-  color: string
+  color: SelectableOption
   memo: string
   image: string
   purchasedYear: number | null
@@ -32,7 +32,7 @@ export interface ItemDocument extends FirestoreDocument {
   name: string
   brand: string
   size: string
-  color: string
+  color: SelectableOption
   memo: string
   image: string
   purchasedYear: number | null

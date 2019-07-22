@@ -12,7 +12,10 @@ export const MOCK_ITEMS: ItemEntity[] = [
     name: 'hoge',
     brand: 'hoge',
     size: 'M',
-    color: '#fff',
+    color: {
+      label: 'ホワイト',
+      value: '#fbfbfb'
+    },
     image: '',
     category: category1,
     subcategory: category2,
@@ -25,10 +28,13 @@ export const MOCK_ITEMS: ItemEntity[] = [
     name: 'fuga',
     brand: 'fuga',
     size: 'S',
-    color: '#000',
+    color: {
+      label: 'ホワイト',
+      value: '#fbfbfb'
+    },
     image: '',
-    category: category2,
-    subcategory: category1,
+    category: category1,
+    subcategory: category2,
     purchasedYear: 2017,
     purchasedMonth: 4,
     memo: 'fuga'
