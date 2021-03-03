@@ -82,7 +82,7 @@
     "nodemon": "^1.19.1",
     "nuxt-property-decorator": "^2.3.0",
     "prettier": "^1.18.2",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "pug-plain-loader": "^1.0.0",
     "reg-keygen-git-hash-plugin": "^0.7.23",
     "reg-notify-github-plugin": "^0.7.23",
