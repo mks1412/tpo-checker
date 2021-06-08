@@ -84,7 +84,7 @@
     "prettier": "^1.18.2",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
-    "reg-keygen-git-hash-plugin": "^0.7.23",
+    "reg-keygen-git-hash-plugin": "^0.10.16",
     "reg-notify-github-plugin": "^0.7.23",
     "reg-publish-gcs-plugin": "^0.7.23",
     "reg-suit": "^0.7.23",
